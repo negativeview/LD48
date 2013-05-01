@@ -24,6 +24,8 @@ import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.difficulty.EasyDifficulty;
 import com.gracefulcode.LD48.difficulty.HarderDifficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
+import com.gracefulcode.LD48.paintbrushes.PlusPaintbrush;
+import com.gracefulcode.LD48.paintbrushes.StarPaintbrush;
 import com.gracefulcode.LD48.views.MainMenuContainer;
 
 public class MainScreen extends GameLevel {
@@ -80,8 +82,7 @@ public class MainScreen extends GameLevel {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				tmp.ld48.difficulty = new Difficulty();
-				tmp.ld48.paintbrush = new Paintbrush();
-				tmp.ld48.paintbrush.name = "plus";
+				tmp.ld48.paintbrush = new PlusPaintbrush();
 				tmp.done = true;
 			}
 		};
@@ -94,8 +95,7 @@ public class MainScreen extends GameLevel {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				tmp.ld48.difficulty = new EasyDifficulty();
-				tmp.ld48.paintbrush = new Paintbrush();
-				tmp.ld48.paintbrush.name = "plus";
+				tmp.ld48.paintbrush = new PlusPaintbrush();
 				tmp.done = true;
 			}
 		};
@@ -108,8 +108,7 @@ public class MainScreen extends GameLevel {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				tmp.ld48.difficulty = new HarderDifficulty();
-				tmp.ld48.paintbrush = new Paintbrush();
-				tmp.ld48.paintbrush.name = "plus";
+				tmp.ld48.paintbrush = new PlusPaintbrush();
 				tmp.done = true;
 			}
 		};
@@ -131,9 +130,7 @@ public class MainScreen extends GameLevel {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				tmp.ld48.difficulty = new Difficulty();
-				tmp.ld48.paintbrush = new Paintbrush();
-				tmp.ld48.paintbrush.name = "flower";
-				tmp.ld48.paintbrush.diagonalsEnabled = true;
+				tmp.ld48.paintbrush = new StarPaintbrush();
 				tmp.done = true;
 			}
 		};
@@ -146,9 +143,7 @@ public class MainScreen extends GameLevel {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				tmp.ld48.difficulty = new EasyDifficulty();
-				tmp.ld48.paintbrush = new Paintbrush();
-				tmp.ld48.paintbrush.diagonalsEnabled = true;
-				tmp.ld48.paintbrush.name = "flower";
+				tmp.ld48.paintbrush = new StarPaintbrush();
 				tmp.done = true;
 			}
 		};
@@ -161,9 +156,7 @@ public class MainScreen extends GameLevel {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				tmp.ld48.difficulty = new HarderDifficulty();
-				tmp.ld48.paintbrush = new Paintbrush();
-				tmp.ld48.paintbrush.diagonalsEnabled = true;
-				tmp.ld48.paintbrush.name = "flower";
+				tmp.ld48.paintbrush = new StarPaintbrush();
 				tmp.done = true;
 			}
 		};
