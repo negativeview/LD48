@@ -248,4 +248,8 @@ public class GameLevel extends Stage {
 		this.clickSound.stop();
 		this.clickSound.play(this.volume);
 	}
+
+	public GameLevel getLevel() {
+		return this;
+	}
 }

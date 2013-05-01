@@ -129,6 +129,7 @@ public class LD48 implements ApplicationListener {
 	}
 	
 	public void gotoGame(GameLevel gl) {
+		Gdx.app.log("DEBUG", "gotoGame");
 		this.stage = gl;
 		this.stage.initialize();
 		stage.setCamera(camera);
@@ -137,6 +138,7 @@ public class LD48 implements ApplicationListener {
 	}
 	
 	public void setupRecap(GameLevel oldLevel) {
+		Gdx.app.log("DEBUG", "setupRecap");
 		this.stage = new RecapScreen(this.skin, this, oldLevel);
 		stage.setCamera(this.camera);
 		Gdx.input.setInputProcessor(this.stage);
@@ -178,6 +180,10 @@ public class LD48 implements ApplicationListener {
 				
 				this.setupRecap(this.stage);
 			} else {
+				GameLevel level = this.stage.getLevel();
+				
+				GameLevel tmp = new GameLevel(level.levelNum + 1, this.skin, this, level.difficulty, level.paintbrush);
+				this.gotoGame(tmp);
 			}
 		}
 		

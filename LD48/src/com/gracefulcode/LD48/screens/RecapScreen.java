@@ -16,10 +16,12 @@ public class RecapScreen extends GameLevel {
 	private Label label;
 	private Button button;
 	private boolean done = false;
+	private GameLevel realLevel;
 	
 	public RecapScreen(Skin skin, LD48 ld48, GameLevel level) {
 		super(0, skin, ld48, level.difficulty, level.paintbrush);	
 		this.skin = skin;
+		this.realLevel = level;
 		
 		this.label = new Label("YOU JUST BEAT LEVEL " + level.levelNum, this.skin);
 		this.label.setPosition(30, 340);
@@ -45,10 +47,20 @@ public class RecapScreen extends GameLevel {
 		ChangeListener cl = new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
+				Gdx.app.log("DEBUG", "111");
 				tmp.done = true;
 			}
 		};
 		this.button.addListener(cl);
+	}
+	
+	@Override
+	public void initialize() {		
+	}
+	
+	@Override
+	public GameLevel getLevel() {
+		return this.realLevel;
 	}
 
 	@Override
