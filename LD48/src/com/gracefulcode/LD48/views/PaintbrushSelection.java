@@ -70,15 +70,8 @@ public class PaintbrushSelection extends LD48View {
 			tb.setPosition(0, Gdx.graphics.getHeight() - i);
 			tb.setSize(MainMenuContainer.MENU_WIDTH, 160);
 			
-			final Skin skin = this.skin;
-			final LD48 ld48 = this.ld48;
-			ChangeListener cl = new ChangeListener() {
-				public void changed(ChangeEvent event, Actor actor) {
-					GameLevel gl = new GameLevel(0, skin, ld48, new Difficulty(), p);
-					ld48.gotoGame(gl);
-				}
-			};
-			tb.addListener(cl);
+			PaintbrushCallbackHack pch = new PaintbrushCallbackHack(this.ld48, p, this.skin);
+			tb.addListener(pch);
 		}
 	}
 	
@@ -88,4 +81,23 @@ public class PaintbrushSelection extends LD48View {
 		this.paintbrushes.add(new StarPaintbrush());
 		this.paintbrushes.add(new SpiralPaintbrush());
 	}
+
+	private class PaintbrushCallbackHack extends ChangeListener {
+		private LD48 ld48;
+		private Paintbrush paintbrush;
+		private Skin skin;
+		
+		public PaintbrushCallbackHack(LD48 ld48, Paintbrush p, Skin skin) {
+			this.ld48 = ld48;
+			this.paintbrush = p;
+			this.skin = skin;
+		}
+
+		@Override
+		public void changed(ChangeEvent event, Actor actor) {
+			GameLevel gl = new GameLevel(0, this.skin, this.ld48, new Difficulty(), this.paintbrush);
+			ld48.gotoGame(gl);
+		}
+	}
 }
+
