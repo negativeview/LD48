@@ -20,21 +20,23 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 import com.badlogic.gdx.Net.HttpRequest;
+import com.gracefulcode.LD48.difficulty.Difficulty;
+import com.gracefulcode.LD48.paintbrushes.Paintbrush;
+import com.gracefulcode.LD48.screens.RecapScreen;
+import com.gracefulcode.LD48.screens.MainScreen;
 
 public class LD48 implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	public GameLevel stage;
 	private Skin skin;
-	private int level = 0;
 	public boolean isPaused = false;
-	private PauseScreen pauseScreen;
 	public Difficulty difficulty;
 	public Paintbrush paintbrush;
 	public Music music;
 	public boolean colorBlindMode = false;
 	
-	public static int TILE_IMAGE_SIZE = 16;
+	public static int TILE_IMAGE_SIZE = 40;
 	
 	@Override
 	public void create() {		
@@ -46,20 +48,20 @@ public class LD48 implements ApplicationListener {
 		Pixmap p = new Pixmap(TILE_IMAGE_SIZE, TILE_IMAGE_SIZE, Pixmap.Format.RGB888);
 		p.setColor(new Color(1, 1, 1, 0));
 		p.fill();
-		p.setColor(new Color(0.2f, 0.2f, 0.2f, 1.0f));
+		p.setColor(new Color(0.7f, 0.7f, 0.7f, 1.0f));
 		p.drawLine(0,  0, TILE_IMAGE_SIZE,  0);
 		p.drawLine(0, 0, 0, TILE_IMAGE_SIZE);
-		
-		this.music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
-		this.music.setVolume(0.1f);
-		this.music.setLooping(true);
-		this.music.play();
 		
 		Texture t = new Texture(p);
 		
 		NinePatch np = new NinePatch(t);
 		this.skin.add("whiteImage", np);
 
+		this.music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
+		this.music.setVolume(0.1f);
+		this.music.setLooping(true);
+		//this.music.play();
+		
 		p = new Pixmap(1024, 1024, Pixmap.Format.RGB888);
 		p.setColor(new Color(0, 0, 0, 1));
 		p.fill();
@@ -87,7 +89,7 @@ public class LD48 implements ApplicationListener {
 		
 		WindowStyle windowStyle = new WindowStyle();
 		windowStyle.background = this.skin.getDrawable("windowBackground");
-		this.skin.add("default", new BitmapFont());
+		this.skin.add("default", new BitmapFont(Gdx.files.internal("data/DoppioOne.fnt"), false));
 		windowStyle.titleFont = this.skin.getFont("default");
 		this.skin.add("default", windowStyle);
 		
@@ -104,8 +106,14 @@ public class LD48 implements ApplicationListener {
 		this.skin.add("checkable", tbStyle);
 
 		tbStyle = new TextButtonStyle();
+		tbStyle.font = this.skin.getFont("default");
+		tbStyle.over = this.skin.getDrawable("blackImage");
+		this.skin.add("menuButton", tbStyle);
+
+		tbStyle = new TextButtonStyle();
 		tbStyle.up = this.skin.getDrawable("whiteImage");
 		tbStyle.font = this.skin.getFont("default");
+		tbStyle.fontColor = new Color(0, 0, 0, 1);
 		this.skin.add("blank", tbStyle);
 
 		LabelStyle labelStyle = new LabelStyle();
@@ -115,19 +123,17 @@ public class LD48 implements ApplicationListener {
 		camera = new OrthographicCamera(w, h);
 		batch = new SpriteBatch();
 		
-		this.stage = new TutorialScreen(this.skin, this);
+		this.stage = new MainScreen(this.skin, this);
 		this.stage.setCamera(camera);
 		Gdx.input.setInputProcessor(this.stage);
-		
-		this.pauseScreen = new PauseScreen(this.skin, this);
 	}
 	
-	public void setupLevel() {
-		this.stage = new GameLevel(this.level++, this.skin, this, this.difficulty, this.paintbrush);
+	public void gotoGame(GameLevel gl) {
+		this.stage = gl;
 		this.stage.initialize();
 		stage.setCamera(camera);
 				
-		Gdx.input.setInputProcessor(stage);
+		Gdx.input.setInputProcessor(stage);		
 	}
 	
 	public void setupRecap(GameLevel oldLevel) {
@@ -172,20 +178,13 @@ public class LD48 implements ApplicationListener {
 				
 				this.setupRecap(this.stage);
 			} else {
-				this.setupLevel();
 			}
 		}
 		
 		stage.act();
 		
 		batch.begin();
-		if (isPaused) {
-			Gdx.input.setInputProcessor(this.pauseScreen);
-			this.pauseScreen.draw();
-		} else {
-			Gdx.input.setInputProcessor(stage);
-			stage.draw();			
-		}
+		stage.draw();
 		batch.end();
 	}
 	
@@ -196,13 +195,11 @@ public class LD48 implements ApplicationListener {
 
 	@Override
 	public void pause() {
-		Gdx.input.setInputProcessor(this.pauseScreen);
 		this.isPaused = true;
 	}
 	
 	public void unpause() {
 		this.isPaused = false;
-		Gdx.input.setInputProcessor(this.stage);		
 	}
 
 	@Override

@@ -1,0 +1,70 @@
+package com.gracefulcode.LD48.screens;
+
+import java.util.Iterator;
+
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.utils.Array;
+import com.gracefulcode.LD48.LD48;
+
+public class PauseScreen extends Stage {
+	private Skin skin;
+	private Image backgroundImage;
+	private Array<Drawable> colors;
+
+	public PauseScreen(Skin skin, final LD48 ld48) {
+		this.skin = skin;
+		this.backgroundImage = new Image(this.skin.getDrawable("blackImage"));
+		this.backgroundImage.setPosition(300, 0);
+		this.backgroundImage.setSize(this.getWidth() - 600, this.getHeight());
+		this.addActor(this.backgroundImage);
+		
+		TextButton tb = new TextButton("Unpause", this.skin);
+		tb.setPosition(310, 10);
+		this.addActor(tb);
+		
+		ChangeListener cl = new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				ld48.unpause();
+			}
+		};
+		tb.addListener(cl);
+
+		tb = new TextButton("Reset Level", this.skin);
+		tb.setPosition(460, 10);
+		this.addActor(tb);
+		
+		cl = new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				ld48.stage.reset();
+				ld48.isPaused = false;
+			}
+		};
+		tb.addListener(cl);
+		
+		Label l = new Label("Color Progression:", this.skin);
+		l.setPosition(310, this.getHeight() - 40);
+		this.addActor(l);
+
+		this.colors = ld48.stage.colors;
+		int i = 0;
+		Iterator<Drawable> colorIt = this.colors.iterator();
+		while (colorIt.hasNext()) {
+			Drawable color = colorIt.next();
+			Button b = new TextButton("", this.skin, "button" + i);
+			b.setBackground(color);
+			
+			this.addActor(b);
+			b.setPosition(310 + (40 * i++), this.getHeight() - 85);
+		}
+	}
+}

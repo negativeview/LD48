@@ -1,0 +1,9 @@
+d:war/
+d:data
+t:data/arial-15.fnt
+i:data/arial-15_00.png
+a:data/Blip_Select.wav
+i:data/flower.png
+a:data/music.mp3
+i:data/plus.png
+i:data/uiskin.png

@@ -1,19 +1,20 @@
 package com.gracefulcode.LD48;
 
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 
 public class TileActor extends TextButton {
 	public LD48 ld48;
 	public int count = 0;
-	private Array<Color> colors;
-	GameLevel level;
+	private Array<Drawable> colors;
+	public GameLevel level;
+	private Skin skin;
 	
-	public TileActor(Skin skin, LD48 ld48, int x, int y, Array<Color> colors, GameLevel level) {
-		super("", skin, "blank");
+	public TileActor(Skin skin, LD48 ld48, int x, int y, Array<Drawable> colors, GameLevel level) {
+		super("", skin, "button0");
+		this.skin = skin;
 		this.colors = colors;
 		this.ld48 = ld48;
 		this.x = x;
@@ -39,16 +40,10 @@ public class TileActor extends TextButton {
 			this.count += this.colors.size;
 		}
 		
-		this.setColor(this.colors.get(this.count));
+		this.setStyle(this.skin.get("button" + this.count, TextButtonStyle.class));
 	}
 	
 	
 	public int x;
-	public int y;
-	
-	private Array<Color> possibleColors;
-
-	public void setPossibleColors(Array<Color> colors) {
-		this.possibleColors = colors;
-	}	
+	public int y;	
 }
