@@ -151,11 +151,7 @@ public class LD48 implements ApplicationListener {
 
 	@Override
 	public void render() {
-		if (isPaused) {
-			Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
-		} else {
-			Gdx.gl.glClearColor(1, 1, 1, 1);
-		}
+		Gdx.gl.glClearColor(1, 1, 1, 1);
 
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		

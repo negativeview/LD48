@@ -112,14 +112,6 @@ public class GameLevel extends Stage {
 		return true;
 	}
 	
-	public void draw() {
-		if (this.ld48.isPaused) {
-//			this.pauseScreen.draw();
-		} else {
-			super.draw();
-		}
-	}
-	
 	public void setSound(int diff) {
 		if (this.numSounds == 0 && diff > 0) {
 			this.clickSound.play(this.volume);
