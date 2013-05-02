@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
+import com.gracefulcode.LD48.GameLevel;
 import com.gracefulcode.LD48.LD48;
 
 public class PauseScreen extends Stage {
@@ -45,7 +46,8 @@ public class PauseScreen extends Stage {
 		cl = new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				ld48.stage.reset();
+				GameLevel level = (GameLevel)ld48.stage;
+				level.reset();
 				ld48.isPaused = false;
 			}
 		};

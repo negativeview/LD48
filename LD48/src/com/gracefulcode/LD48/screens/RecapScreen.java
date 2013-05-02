@@ -9,9 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.gracefulcode.LD48.GameLevel;
+import com.gracefulcode.LD48.GameLevelBase;
 import com.gracefulcode.LD48.LD48;
 
-public class RecapScreen extends GameLevel {
+public class RecapScreen extends GameLevelBase {
 	private Skin skin;
 	private Label label;
 	private Button button;
@@ -19,11 +20,11 @@ public class RecapScreen extends GameLevel {
 	private GameLevel realLevel;
 	
 	public RecapScreen(Skin skin, LD48 ld48, GameLevel level) {
-		super(0, skin, ld48, level.difficulty, level.paintbrush);	
+		super(skin, ld48);	
 		this.skin = skin;
 		this.realLevel = level;
 		
-		this.label = new Label("YOU JUST BEAT LEVEL " + level.levelNum, this.skin);
+		this.label = new Label("YOU JUST BEAT LEVEL " + level.getLevelNum(), this.skin);
 		this.label.setPosition(30, 340);
 		this.addActor(this.label);
 		
@@ -53,20 +54,16 @@ public class RecapScreen extends GameLevel {
 		};
 		this.button.addListener(cl);
 	}
-	
+
 	@Override
-	public void initialize() {		
+	public boolean isRecapScreen() {
+		return true;
 	}
 	
-	@Override
-	public GameLevel getLevel() {
+	public GameLevel getRealLevel() {
 		return this.realLevel;
 	}
-
-	@Override
-	public void reset() {
-	}
-
+	
 	@Override
 	public boolean isRealLevel() {
 		return false;

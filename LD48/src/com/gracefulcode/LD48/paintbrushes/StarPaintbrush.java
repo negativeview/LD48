@@ -79,28 +79,28 @@ public class StarPaintbrush extends Paintbrush {
 			Action action = new Action() {
 				public boolean act(float delta) {
 					if (direction == 0 || direction == 1)
-						if (tmp.ld48.getTile(tmp.x - 1, tmp.y) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x - 1, tmp.y), 1, value, false);
+						if (tmp.level.getTile(tmp.x - 1, tmp.y) != null) tmp2.pulse(tmp.level.getTile(tmp.x - 1, tmp.y), 1, value, false);
 					
 					if (direction == 0 || direction == 2)
-						if (tmp.ld48.getTile(tmp.x + 1, tmp.y) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x + 1, tmp.y), 2, value, false);
+						if (tmp.level.getTile(tmp.x + 1, tmp.y) != null) tmp2.pulse(tmp.level.getTile(tmp.x + 1, tmp.y), 2, value, false);
 					
 					if (direction == 0 || direction == 3)
-						if (tmp.ld48.getTile(tmp.x, tmp.y - 1) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x, tmp.y - 1), 3, value, false);
+						if (tmp.level.getTile(tmp.x, tmp.y - 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y - 1), 3, value, false);
 					
 					if (direction == 0 || direction == 4)
-						if (tmp.ld48.getTile(tmp.x, tmp.y + 1) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x, tmp.y + 1), 4, value, false);
+						if (tmp.level.getTile(tmp.x, tmp.y + 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y + 1), 4, value, false);
 					
 					if (direction == 0 || direction == 5) {
-						if (tmp.ld48.getTile(tmp.x + 1, tmp.y + 1) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x + 1, tmp.y + 1), 5, value, false);
+						if (tmp.level.getTile(tmp.x + 1, tmp.y + 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x + 1, tmp.y + 1), 5, value, false);
 					}
 					if (direction == 0 || direction == 6) {
-						if (tmp.ld48.getTile(tmp.x + 1, tmp.y - 1) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x + 1, tmp.y - 1), 6, value, false);
+						if (tmp.level.getTile(tmp.x + 1, tmp.y - 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x + 1, tmp.y - 1), 6, value, false);
 					}
 					if (direction == 0 || direction == 7) {
-						if (tmp.ld48.getTile(tmp.x - 1, tmp.y + 1) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x - 1, tmp.y + 1), 7, value, false);
+						if (tmp.level.getTile(tmp.x - 1, tmp.y + 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x - 1, tmp.y + 1), 7, value, false);
 					}
 					if (direction == 0 || direction == 8) {
-						if (tmp.ld48.getTile(tmp.x - 1, tmp.y - 1) != null) tmp2.pulse(tmp.ld48.getTile(tmp.x - 1, tmp.y - 1), 8, value, false);
+						if (tmp.level.getTile(tmp.x - 1, tmp.y - 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x - 1, tmp.y - 1), 8, value, false);
 					}
 					
 					tmp.level.setSound(-1);
@@ -113,28 +113,28 @@ public class StarPaintbrush extends Paintbrush {
 			actor.addAction(sa);
 		} else {
 			if (direction == 0 || direction == 1)
-				if (actor.ld48.getTile(actor.x - 1, actor.y) != null) this.pulse(actor.ld48.getTile(actor.x - 1, actor.y), 1, value, true);
+				if (actor.level.getTile(actor.x - 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y), 1, value, true);
 			
 			if (direction == 0 || direction == 2)
-				if (actor.ld48.getTile(actor.x + 1, actor.y) != null) this.pulse(actor.ld48.getTile(actor.x + 1, actor.y), 2, value, true);
+				if (actor.level.getTile(actor.x + 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y), 2, value, true);
 			
 			if (direction == 0 || direction == 3)
-				if (actor.ld48.getTile(actor.x, actor.y - 1) != null) this.pulse(actor.ld48.getTile(actor.x, actor.y - 1), 3, value, true);
+				if (actor.level.getTile(actor.x, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y - 1), 3, value, true);
 			
 			if (direction == 0 || direction == 4)
-				if (actor.ld48.getTile(actor.x, actor.y + 1) != null) this.pulse(actor.ld48.getTile(actor.x, actor.y + 1), 4, value, true);
+				if (actor.level.getTile(actor.x, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y + 1), 4, value, true);
 
 			if (direction == 0 || direction == 5) {
-				if (actor.ld48.getTile(actor.x + 1, actor.y + 1) != null) this.pulse(actor.ld48.getTile(actor.x + 1, actor.y + 1), 5, value, true);
+				if (actor.level.getTile(actor.x + 1, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y + 1), 5, value, true);
 			}
 			if (direction == 0 || direction == 6) {
-				if (actor.ld48.getTile(actor.x + 1, actor.y - 1) != null) this.pulse(actor.ld48.getTile(actor.x + 1, actor.y - 1), 6, value, true);
+				if (actor.level.getTile(actor.x + 1, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y - 1), 6, value, true);
 			}
 			if (direction == 0 || direction == 7) {
-				if (actor.ld48.getTile(actor.x - 1, actor.y + 1) != null) this.pulse(actor.ld48.getTile(actor.x - 1, actor.y + 1), 7, value, true);
+				if (actor.level.getTile(actor.x - 1, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y + 1), 7, value, true);
 			}
 			if (direction == 0 || direction == 8) {
-				if (actor.ld48.getTile(actor.x - 1, actor.y - 1) != null) this.pulse(actor.ld48.getTile(actor.x - 1, actor.y - 1), 8, value, true);
+				if (actor.level.getTile(actor.x - 1, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y - 1), 8, value, true);
 			}
 		}
 	}

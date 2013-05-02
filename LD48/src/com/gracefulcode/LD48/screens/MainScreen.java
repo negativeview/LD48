@@ -18,7 +18,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.gracefulcode.LD48.ColorScheme;
-import com.gracefulcode.LD48.GameLevel;
+import com.gracefulcode.LD48.GameLevelBase;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.difficulty.EasyDifficulty;
@@ -28,7 +28,7 @@ import com.gracefulcode.LD48.paintbrushes.PlusPaintbrush;
 import com.gracefulcode.LD48.paintbrushes.StarPaintbrush;
 import com.gracefulcode.LD48.views.MainMenuContainer;
 
-public class MainScreen extends GameLevel {
+public class MainScreen extends GameLevelBase {
 	private Button button;
 	private Skin skin;
 	private boolean done = false;
@@ -38,7 +38,7 @@ public class MainScreen extends GameLevel {
 	private WidgetGroup tileHolder;
 	
 	public MainScreen(Skin skin, LD48 ld48) {
-		super(0, skin, ld48, null, null);
+		super(skin, ld48);
 		this.colorScheme = new ColorScheme();
 		
 		this.skin = skin;

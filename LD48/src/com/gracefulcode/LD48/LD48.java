@@ -28,7 +28,7 @@ import com.gracefulcode.LD48.screens.MainScreen;
 public class LD48 implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	public GameLevel stage;
+	public GameLevelBase stage;
 	private Skin skin;
 	public boolean isPaused = false;
 	public Difficulty difficulty;
@@ -129,9 +129,8 @@ public class LD48 implements ApplicationListener {
 	}
 	
 	public void gotoGame(GameLevel gl) {
-		Gdx.app.log("DEBUG", "gotoGame");
 		this.stage = gl;
-		this.stage.initialize();
+		gl.initialize();
 		stage.setCamera(camera);
 				
 		Gdx.input.setInputProcessor(stage);		
@@ -157,7 +156,8 @@ public class LD48 implements ApplicationListener {
 		
 		if (this.stage.isDone()) {
 			if (this.stage.isRealLevel()) {
-				String json = "{diffuculty: '" + this.stage.difficulty.name + "', level: " + this.stage.levelNum + ", paintbrush: '" + this.stage.paintbrush.name + "', bestKnown: " + this.stage.bestKnown + ", numClicks: " + this.stage.numClicks + ", time: " + this.stage.time + "}";
+				GameLevel level = ((GameLevel)this.stage);
+				String json = "{diffuculty: '" + level.getDifficulty().name + "', level: " + level.getLevelNum() + ", paintbrush: '" + level.getPaintbrush().name + "', bestKnown: " + level.bestKnown + ", numClicks: " + level.numClicks + ", time: " + level.time + "}";
 
 				HttpRequest req = new HttpRequest("GET");
 				req.setContent("score=" + json);
@@ -174,11 +174,10 @@ public class LD48 implements ApplicationListener {
 				};
 				Gdx.net.sendHttpRequest(req, listener);
 				
-				this.setupRecap(this.stage);
-			} else {
-				GameLevel level = this.stage.getLevel();
-				
-				GameLevel tmp = new GameLevel(level.levelNum + 1, this.skin, this, level.difficulty, level.paintbrush);
+				this.setupRecap(level);
+			} else if (this.stage.isRecapScreen()){
+				RecapScreen level = (RecapScreen)(this.stage);
+				GameLevel tmp = new GameLevel(level.getRealLevel().getLevelNum() + 1, this.skin, this, level.getRealLevel().getDifficulty(), level.getRealLevel().getPaintbrush());
 				this.gotoGame(tmp);
 			}
 		}
@@ -206,13 +205,5 @@ public class LD48 implements ApplicationListener {
 
 	@Override
 	public void resume() {
-	}
-
-	public TileActor getTile(int x, int y) {
-		return this.stage.getTile(x, y);
-	}
-	
-	public TileActor getTile(float x, float y) {
-		return this.getTile((int)x, (int)y);
 	}
 }
