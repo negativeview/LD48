@@ -1,5 +1,6 @@
 package com.gracefulcode.LD48;
 
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
@@ -42,5 +43,14 @@ public class TileActor extends TextButton {
 	}
 	
 	public int x;
-	public int y;	
+	public int y;
+	private SequenceAction baseAction;
+
+	public void setBaseAction(SequenceAction baseAction) {
+		this.baseAction = baseAction;
+	}
+	
+	public SequenceAction getBaseAction() {
+		return this.baseAction;
+	}
 }

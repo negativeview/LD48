@@ -26,8 +26,7 @@ public class GameLevel extends GameLevelBase {
 	private long startTime;	
 	private Sound clickSound;
 
-	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty,
-			Paintbrush paintbrush) {
+	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48);
 		this.random = new Random();
 		this.clickSound = Gdx.audio.newSound(Gdx.files.internal("data/Blip_Select.wav"));
@@ -97,6 +96,7 @@ public class GameLevel extends GameLevelBase {
 				button.setSize(tileSize, tileSize);
 				button.setColor(new Color(1, 1, 1, 1));
 				button.setPosition(x,  y);
+				this.paintbrush.setupPulse(button);
 				this.addActor(button);
 				button.addListener(cl);
 				

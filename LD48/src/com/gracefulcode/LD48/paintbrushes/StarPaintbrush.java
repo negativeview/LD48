@@ -28,9 +28,6 @@ public class StarPaintbrush extends Paintbrush {
 		actor.changeCount(value);
 		
 		if (!instant) {
-			float pulseDuration = 0.02f;
-			float pulseSize = actor.getHeight() / 2;
-			
 			if (direction != 0) {
 				actor.level.setSound(1);
 			} else {
@@ -38,7 +35,7 @@ public class StarPaintbrush extends Paintbrush {
 				actor.level.setSound(1);
 			}
 			
-			SequenceAction sa = this.getBaseAction(pulseSize, pulseDuration);
+			SequenceAction sa = actor.getBaseAction();
 			
 			final TileActor tmp = actor;
 			final Paintbrush tmp2 = this;

@@ -53,4 +53,8 @@ abstract public class Paintbrush {
 		
 		return sa;
 	}
+
+	public void setupPulse(TileActor button) {
+		button.setBaseAction(this.getBaseAction(button.getHeight() / 2, 0.02f));
+	}
 }
