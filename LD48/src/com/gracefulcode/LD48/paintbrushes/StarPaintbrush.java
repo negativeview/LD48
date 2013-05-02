@@ -41,38 +41,7 @@ public class StarPaintbrush extends Paintbrush {
 				actor.level.setSound(1);
 			}
 			
-			MoveByAction mba = new MoveByAction();
-			mba.setActor(actor);
-			mba.setAmount(pulseSize * -0.5f, pulseSize * -0.5f);
-			mba.setDuration(pulseDuration);
-			
-			SizeByAction sba = new SizeByAction();
-			sba.setActor(actor);
-			sba.setAmount(pulseSize, pulseSize);
-			sba.setDuration(pulseDuration);
-			
-			ParallelAction pa = new ParallelAction();
-			pa.addAction(mba);
-			pa.addAction(sba);
-			
-			SequenceAction sa = new SequenceAction();
-			sa.addAction(pa);
-	
-			mba = new MoveByAction();
-			mba.setActor(actor);
-			mba.setAmount(pulseSize * 0.5f, pulseSize * 0.5f);
-			mba.setDuration(pulseDuration);
-			
-			sba = new SizeByAction();
-			sba.setActor(actor);
-			sba.setAmount(pulseSize * -1, pulseSize * -1);
-			sba.setDuration(pulseDuration);
-			
-			pa = new ParallelAction();
-			pa.addAction(mba);
-			pa.addAction(sba);
-			
-			sa.addAction(pa);
+			SequenceAction sa = this.getBaseAction(pulseSize, pulseDuration);
 			
 			final TileActor tmp = actor;
 			final Paintbrush tmp2 = this;

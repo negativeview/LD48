@@ -40,8 +40,7 @@ public class MainMenu extends LD48View {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}
-			
+			}	
 		};
 		this.newGameButton = new TextButton("New Game", this.skin, "menuButton");
 		this.newGameButton.setPosition(0, 400);

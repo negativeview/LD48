@@ -21,4 +21,37 @@ abstract public class Paintbrush {
 	public String getDescription() {
 		return null;
 	}
+	
+	protected SequenceAction getBaseAction(float pulseSize, float pulseDuration) {
+		MoveByAction mba = new MoveByAction();
+		mba.setAmount(pulseSize * -0.5f, pulseSize * -0.5f);
+		mba.setDuration(pulseDuration);
+		
+		SizeByAction sba = new SizeByAction();
+		sba.setAmount(pulseSize, pulseSize);
+		sba.setDuration(pulseDuration);
+		
+		ParallelAction pa = new ParallelAction();
+		pa.addAction(mba);
+		pa.addAction(sba);
+		
+		SequenceAction sa = new SequenceAction();
+		sa.addAction(pa);
+
+		mba = new MoveByAction();
+		mba.setAmount(pulseSize * 0.5f, pulseSize * 0.5f);
+		mba.setDuration(pulseDuration);
+		
+		sba = new SizeByAction();
+		sba.setAmount(pulseSize * -1, pulseSize * -1);
+		sba.setDuration(pulseDuration);
+		
+		pa = new ParallelAction();
+		pa.addAction(mba);
+		pa.addAction(sba);
+		
+		sa.addAction(pa);
+		
+		return sa;
+	}
 }
