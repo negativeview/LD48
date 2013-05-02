@@ -32,11 +32,6 @@ public class MainMenu extends LD48View {
 		this.creditLabel.setPosition(350, 592);
 		this.addActor(this.creditLabel);
 		
-		this.tutorialButton = new TextButton("Tutorial", this.skin, "menuButton");
-		this.tutorialButton.setPosition(0, 400);
-		this.tutorialButton.setSize(MainMenuContainer.MENU_WIDTH, 40);
-		this.addActor(this.tutorialButton);
-		
 		cl = new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
@@ -49,7 +44,7 @@ public class MainMenu extends LD48View {
 			
 		};
 		this.newGameButton = new TextButton("New Game", this.skin, "menuButton");
-		this.newGameButton.setPosition(0, 360);
+		this.newGameButton.setPosition(0, 400);
 		this.newGameButton.setSize(MainMenuContainer.MENU_WIDTH, 40);
 		this.newGameButton.addListener(cl);
 		this.addActor(this.newGameButton);
