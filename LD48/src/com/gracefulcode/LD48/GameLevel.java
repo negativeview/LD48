@@ -12,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener.ChangeEvent;
 import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
@@ -94,7 +93,7 @@ public class GameLevel extends GameLevelBase {
 			this.buttons.add(tmpArray);
 			
 			for (int y = 0; y < this.getHeight(); y += tileSize) {
-				TileActor button = new TileActor(this.skin, ld48, x / this.tileSize,  y / this.tileSize, this.colors, this);
+				TileActor button = new TileActor(this.skin, ld48, x / this.tileSize,  y / this.tileSize, this.colors.size, this);
 				button.setSize(tileSize, tileSize);
 				button.setColor(new Color(1, 1, 1, 1));
 				button.setPosition(x,  y);

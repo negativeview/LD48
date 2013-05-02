@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.GameLevel;
-import com.gracefulcode.LD48.GameLevelBase;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;

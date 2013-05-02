@@ -23,7 +23,6 @@ import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.difficulty.EasyDifficulty;
 import com.gracefulcode.LD48.difficulty.HarderDifficulty;
-import com.gracefulcode.LD48.paintbrushes.Paintbrush;
 import com.gracefulcode.LD48.paintbrushes.PlusPaintbrush;
 import com.gracefulcode.LD48.paintbrushes.StarPaintbrush;
 import com.gracefulcode.LD48.views.MainMenuContainer;

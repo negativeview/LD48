@@ -10,7 +10,6 @@ import com.gracefulcode.LD48.LD48;
 public class MainMenu extends LD48View {
 	private Skin skin;
 	private TextButton newGameButton;
-	private TextButton tutorialButton;
 	private TextButton exitButton;
 	private Label gameTitleLabel;
 	private Label creditLabel;
