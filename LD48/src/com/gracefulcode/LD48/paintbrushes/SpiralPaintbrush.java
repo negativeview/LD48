@@ -3,6 +3,8 @@ package com.gracefulcode.LD48.paintbrushes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Action;
+import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.gracefulcode.LD48.TileActor;
 
@@ -19,8 +21,43 @@ public class SpiralPaintbrush extends Paintbrush {
 	}
 
 	@Override
-	public void pulse(TileActor actor, int direction, int value, boolean instant) {
-		// TODO Auto-generated method stub
+	public void pulse(TileActor actor, final int direction, final int value, boolean instant) {
+		this.pulse(actor, direction, value, instant, 0, 1);
+	}
 		
+	public void pulse(TileActor actor, int direction, final int value, boolean instant, int count, int target) {
+		actor.changeCount(value);
+		
+//		if (!instant) {
+//		} else {
+			Gdx.app.log("DEBUG", "Direction: " + direction + " Count: " + count);
+			if (count >= target) {
+				direction += 1;
+				count = 0;
+				target++;
+			}
+			
+			if (direction >= 4)
+				direction -= 4;
+			
+			switch(direction) {
+			case 0:
+				if (actor.level.getTile(actor.x, actor.y - 1) != null)
+					this.pulse(actor.level.getTile(actor.x, actor.y - 1), direction, value, instant, count + 1, target);
+				break;
+			case 1:
+				if (actor.level.getTile(actor.x + 1, actor.y) != null)
+					this.pulse(actor.level.getTile(actor.x + 1, actor.y), direction, value, instant, count + 1, target);
+				break;
+			case 2:
+				if (actor.level.getTile(actor.x, actor.y + 1) != null)
+					this.pulse(actor.level.getTile(actor.x, actor.y + 1), direction, value, instant, count + 1, target);
+				break;
+			case 3:
+				if (actor.level.getTile(actor.x - 1, actor.y) != null)
+					this.pulse(actor.level.getTile(actor.x - 1, actor.y), direction, value, instant, count + 1, target);
+				break;
+			}
+//		}
 	}
 }
