@@ -9,13 +9,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
@@ -84,16 +80,7 @@ public class GameLevel extends GameLevelBase {
 	
 	public void initialize() {
 		final GameLevel gl = this;
-		ChangeListener cl = new ChangeListener() {
-			public void changed(ChangeEvent event, Actor actor) {
-				gl.getPaintbrush().pulse((TileActor)actor, 0, -1, false);
-				if (gl.numClicks == 0) {
-					gl.startTiming();
-				}
-				gl.numClicks++;
-			}
-		};
-		
+
 		ClickListener cll = new ClickListener() {
 			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
 				if (button == 1) {
@@ -116,13 +103,12 @@ public class GameLevel extends GameLevelBase {
 			this.buttons.add(tmpArray);
 			
 			for (int y = 0; y < this.getHeight(); y += tileSize) {
-				TileActor button = new TileActor(this.skin, ld48, x / this.tileSize,  y / this.tileSize, this.buttons.size, this);
+				TileActor button = new TileActor(this.skin, ld48, x / this.tileSize,  y / this.tileSize, 6, this);
 				button.setSize(tileSize, tileSize);
 				button.setColor(new Color(1, 1, 1, 1));
 				button.setPosition(x,  y);
 				this.paintbrush.setupPulse(button);
 				this.addActor(button);
-				button.addListener(cl);
 				
 				tmpArray.add(button);
 			}

@@ -132,12 +132,10 @@ public class LD48 implements ApplicationListener {
 		this.stage = gl;
 		gl.initialize();
 		stage.setCamera(camera);
-				
 		Gdx.input.setInputProcessor(stage);		
 	}
 	
 	public void setupRecap(GameLevel oldLevel) {
-		Gdx.app.log("DEBUG", "setupRecap");
 		this.stage = new RecapScreen(this.skin, this, oldLevel);
 		stage.setCamera(this.camera);
 		Gdx.input.setInputProcessor(this.stage);

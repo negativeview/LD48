@@ -1,5 +1,6 @@
 package com.gracefulcode.LD48;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
@@ -32,7 +33,7 @@ public class TileActor extends Actor {
 		this.drawable.draw(batch, this.x * 40, this.y * 40, 40, 40);
 		this.label.setPosition(this.x * 40, this.y * 40);
 		this.label.setColor(1.0f, 0.0f, 0.0f, 1.0f);
-		this.label.setText("" + this.x);
+		this.label.setText("" + this.count);
 		this.label.draw(batch,  alpha);
 	}
 	

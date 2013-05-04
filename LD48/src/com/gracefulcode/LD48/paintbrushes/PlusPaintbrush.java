@@ -38,17 +38,29 @@ public class PlusPaintbrush extends Paintbrush {
 			final Paintbrush tmp2 = this;
 			Action action = new Action() {
 				public boolean act(float delta) {
-					if (direction == 0 || direction == 1)
-						if (tmp.level.getTile(tmp.x - 1, tmp.y) != null) tmp2.pulse(tmp.level.getTile(tmp.x - 1, tmp.y), 1, value, false);
+					if (direction == 0 || direction == 1) {
+						if (tmp.level.getTile(tmp.x - 1, tmp.y) != null) {
+							tmp2.pulse(tmp.level.getTile(tmp.x - 1, tmp.y), 1, value, false);
+						}
+					}
 					
-					if (direction == 0 || direction == 2)
-						if (tmp.level.getTile(tmp.x + 1, tmp.y) != null) tmp2.pulse(tmp.level.getTile(tmp.x + 1, tmp.y), 2, value, false);
+					if (direction == 0 || direction == 2) {
+						if (tmp.level.getTile(tmp.x + 1, tmp.y) != null) {
+							tmp2.pulse(tmp.level.getTile(tmp.x + 1, tmp.y), 2, value, false);						
+						}
+					}
 					
-					if (direction == 0 || direction == 3)
-						if (tmp.level.getTile(tmp.x, tmp.y - 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y - 1), 3, value, false);
+					if (direction == 0 || direction == 3) {
+						if (tmp.level.getTile(tmp.x, tmp.y - 1) != null) {
+							tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y - 1), 3, value, false);
+						}
+					}
 					
-					if (direction == 0 || direction == 4)
-						if (tmp.level.getTile(tmp.x, tmp.y + 1) != null) tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y + 1), 4, value, false);
+					if (direction == 0 || direction == 4) {
+						if (tmp.level.getTile(tmp.x, tmp.y + 1) != null) {
+							tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y + 1), 4, value, false);
+						}
+					}
 					
 					tmp.level.setSound(-1);
 					return true;
@@ -59,17 +71,30 @@ public class PlusPaintbrush extends Paintbrush {
 			actor.toFront();
 			actor.addAction(sa);
 		} else {
-			if (direction == 0 || direction == 1)
-				if (actor.level.getTile(actor.x - 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y), 1, value, true);
+			if (direction == 0 || direction == 1) {
+				if (actor.level.getTile(actor.x - 1, actor.y) != null) {
+					TileActor tmp = actor.level.getTile(actor.x - 1, actor.y);
+					this.pulse(tmp, 1, value, true);
+				}
+			}
 			
-			if (direction == 0 || direction == 2)
-				if (actor.level.getTile(actor.x + 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y), 2, value, true);
+			if (direction == 0 || direction == 2) {
+				if (actor.level.getTile(actor.x + 1, actor.y) != null) {
+					this.pulse(actor.level.getTile(actor.x + 1, actor.y), 2, value, true);
+				}
+			}
 			
-			if (direction == 0 || direction == 3)
-				if (actor.level.getTile(actor.x, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y - 1), 3, value, true);
+			if (direction == 0 || direction == 3) {
+				if (actor.level.getTile(actor.x, actor.y - 1) != null) {
+					this.pulse(actor.level.getTile(actor.x, actor.y - 1), 3, value, true);
+				}
+			}
 			
-			if (direction == 0 || direction == 4)
-				if (actor.level.getTile(actor.x, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y + 1), 4, value, true);
+			if (direction == 0 || direction == 4) {
+				if (actor.level.getTile(actor.x, actor.y + 1) != null) {
+					this.pulse(actor.level.getTile(actor.x, actor.y + 1), 4, value, true);
+				}
+			}
 		}
 	}
 }
