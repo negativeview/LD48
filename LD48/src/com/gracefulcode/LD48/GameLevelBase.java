@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 
 public class GameLevelBase extends Stage {
-	public Array<Drawable> colors;
 	protected Skin skin;
 	public LD48 ld48;
 	public int bestKnown;
@@ -22,7 +21,6 @@ public class GameLevelBase extends Stage {
 	public float time = 0.0f;
 	
 	public GameLevelBase(Skin skin, LD48 ld48) {
-		this.colors = new Array<Drawable>();
 		this.skin = skin;
 		this.ld48 = ld48;				
 	}

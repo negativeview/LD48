@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
@@ -46,15 +47,7 @@ public class GameLevel extends GameLevelBase {
 		this.addDrawable(5, new Color(246.0f / 255.0f, 205.0f / 255.0f, 91.0f / 255.0f, 1.0f));
 	}
 
-	private int stupid = 0;
 	private void addDrawable(int id, Color c) {
-		TextButtonStyle tbs = new TextButtonStyle();
-		tbs.font = this.skin.getFont("default");
-		tbs.pressedOffsetX = 0.0f;
-		tbs.pressedOffsetY = 0.0f;
-		tbs.unpressedOffsetX = 0.0f;
-		tbs.unpressedOffsetY = 0.0f;
-		
 		Pixmap p = new Pixmap(40, 40, Pixmap.Format.RGB888);
 		p.setColor(c);
 		p.fill();
@@ -63,15 +56,8 @@ public class GameLevel extends GameLevelBase {
 		p.drawLine(0,  0, 40,  0);
 		p.drawLine(0, 0, 0, 40);
 
-		Texture t = new Texture(p);
-		
-		this.skin.add("tmp" + this.stupid, t);
-		this.colors.add(this.skin.getDrawable("tmp" + this.stupid));
-
-		tbs.up = this.skin.getDrawable("tmp" + this.stupid);
-		this.skin.add("button" + id, tbs);
-
-		this.stupid++;
+		Texture t = new Texture(p);		
+		this.skin.add("button" + id, t);
 	}
 
 	@Override
