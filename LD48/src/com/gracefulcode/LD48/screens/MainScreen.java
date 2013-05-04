@@ -33,7 +33,6 @@ public class MainScreen extends GameLevelBase {
 	private boolean done = false;
 	private Image backgroundBackground;
 	private ColorScheme colorScheme;
-	private int tileSize = 40;
 	private WidgetGroup tileHolder;
 	
 	public MainScreen(Skin skin, LD48 ld48) {
@@ -48,10 +47,10 @@ public class MainScreen extends GameLevelBase {
 		
 		p.setColor(new Color(0.0f, 0.0f, 0.0f, 1));
 		
-		for (int i = 0; i < 720; i += this.tileSize) {
+		for (int i = 0; i < 720; i += LD48.TILE_SIZE) {
 			p.drawLine(0,  i, 1280, i);			
 		}
-		for (int i = 0; i < 1280; i += this.tileSize) {
+		for (int i = 0; i < 1280; i += LD48.TILE_SIZE) {
 			p.drawLine(i, 0, i, 720);
 		}
 		
@@ -178,11 +177,11 @@ public class MainScreen extends GameLevelBase {
 		Random rand = new Random();
 		for (int i = 0; i < this.colorScheme.getNumColors(); i++) {
 			for (int m = 0; m < 10; m++) {
-				Pixmap p = new Pixmap(this.tileSize - 1, this.tileSize - 1, Pixmap.Format.RGB888);
+				Pixmap p = new Pixmap(LD48.TILE_SIZE - 1, LD48.TILE_SIZE - 1, Pixmap.Format.RGB888);
 				
 				Color c = this.colorScheme.getColor(i);
-				int x = rand.nextInt(1280 / this.tileSize);
-				int y = rand.nextInt(720 / this.tileSize);
+				int x = rand.nextInt(1280 / LD48.TILE_SIZE);
+				int y = rand.nextInt(720 / LD48.TILE_SIZE);
 				
 				p.setColor(c);
 				p.fill();
@@ -191,7 +190,7 @@ public class MainScreen extends GameLevelBase {
 				Image im = new Image(t);
 				im.setZIndex(10);
 				
-				im.setPosition((x * this.tileSize) + 1,  (y * this.tileSize));
+				im.setPosition((x * LD48.TILE_SIZE) + 1,  (y * LD48.TILE_SIZE));
 				im.setColor(0, 0, 0, 0);
 				this.tileHolder.addActor(im);
 				

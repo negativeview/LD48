@@ -1,24 +1,18 @@
 package com.gracefulcode.LD48.screens;
 
-import java.util.Iterator;
-
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.GameLevel;
 import com.gracefulcode.LD48.LD48;
 
 public class PauseScreen extends Stage {
 	private Skin skin;
 	private Image backgroundImage;
-	private Array<Drawable> colors;
 
 	public PauseScreen(Skin skin, final LD48 ld48) {
 		this.skin = skin;

@@ -36,7 +36,11 @@ public class LD48 implements ApplicationListener {
 	public Music music;
 	public boolean colorBlindMode = false;
 	
-	public static int TILE_IMAGE_SIZE = 40;
+	public static int TILE_SIZE;
+	
+	public LD48(int tileSize) {
+		LD48.TILE_SIZE = tileSize;
+	}
 	
 	@Override
 	public void create() {		
@@ -45,12 +49,12 @@ public class LD48 implements ApplicationListener {
 		
 		this.skin = new Skin();
 
-		Pixmap p = new Pixmap(TILE_IMAGE_SIZE, TILE_IMAGE_SIZE, Pixmap.Format.RGB888);
+		Pixmap p = new Pixmap(LD48.TILE_SIZE, LD48.TILE_SIZE, Pixmap.Format.RGB888);
 		p.setColor(new Color(1, 1, 1, 0));
 		p.fill();
 		p.setColor(new Color(0.7f, 0.7f, 0.7f, 1.0f));
-		p.drawLine(0,  0, TILE_IMAGE_SIZE,  0);
-		p.drawLine(0, 0, 0, TILE_IMAGE_SIZE);
+		p.drawLine(0,  0, LD48.TILE_SIZE,  0);
+		p.drawLine(0, 0, 0, LD48.TILE_SIZE);
 		
 		Texture t = new Texture(p);
 		
