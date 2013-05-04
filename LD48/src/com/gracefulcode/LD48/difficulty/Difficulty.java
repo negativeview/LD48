@@ -1,5 +1,7 @@
 package com.gracefulcode.LD48.difficulty;
 
+import com.gracefulcode.LD48.LD48;
+
 public class Difficulty {
 	public String name;
 	
@@ -12,6 +14,6 @@ public class Difficulty {
 	}
 
 	public int tileSize() {
-		return 40;
+		return LD48.TILE_SIZE;
 	}
 }

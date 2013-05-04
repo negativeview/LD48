@@ -29,7 +29,7 @@ public class TileActor extends Actor {
 	}
 	
 	public void draw(SpriteBatch batch, float alpha) {
-		this.drawable.draw(batch, this.x * 40, this.y * 40, 40, 40);
+		this.drawable.draw(batch, this.x * LD48.TILE_SIZE, this.y * LD48.TILE_SIZE, LD48.TILE_SIZE, LD48.TILE_SIZE);
 	}
 	
 	public void changeCount(int by) {
