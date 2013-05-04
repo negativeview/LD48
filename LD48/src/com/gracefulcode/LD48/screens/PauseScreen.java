@@ -56,17 +56,5 @@ public class PauseScreen extends Stage {
 		Label l = new Label("Color Progression:", this.skin);
 		l.setPosition(310, this.getHeight() - 40);
 		this.addActor(l);
-
-		this.colors = ld48.stage.colors;
-		int i = 0;
-		Iterator<Drawable> colorIt = this.colors.iterator();
-		while (colorIt.hasNext()) {
-			Drawable color = colorIt.next();
-			Button b = new TextButton("", this.skin, "button" + i);
-			b.setBackground(color);
-			
-			this.addActor(b);
-			b.setPosition(310 + (40 * i++), this.getHeight() - 85);
-		}
 	}
 }
