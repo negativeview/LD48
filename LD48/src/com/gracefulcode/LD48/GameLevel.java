@@ -116,7 +116,7 @@ public class GameLevel extends GameLevelBase {
 			this.buttons.add(tmpArray);
 			
 			for (int y = 0; y < this.getHeight(); y += tileSize) {
-				TileActor button = new TileActor(this.skin, ld48, x / this.tileSize,  y / this.tileSize, this.colors.size, this);
+				TileActor button = new TileActor(this.skin, ld48, x / this.tileSize,  y / this.tileSize, this.buttons.size, this);
 				button.setSize(tileSize, tileSize);
 				button.setColor(new Color(1, 1, 1, 1));
 				button.setPosition(x,  y);

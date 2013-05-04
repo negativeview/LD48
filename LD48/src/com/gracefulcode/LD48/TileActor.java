@@ -3,7 +3,7 @@ package com.gracefulcode.LD48;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 public class TileActor extends Actor {
 	public LD48 ld48;
@@ -11,6 +11,7 @@ public class TileActor extends Actor {
 	public GameLevel level;
 	private Skin skin;
 	private int colorCount;
+	private Drawable drawable;
 	
 	public TileActor(Skin skin, LD48 ld48, int x, int y, int colorCount, GameLevel level) {
 		this.skin = skin;
@@ -32,7 +33,7 @@ public class TileActor extends Actor {
 			this.count += this.colorCount;
 		}
 		
-//		this.setStyle(this.skin.get("button" + this.count, TextButtonStyle.class));
+		this.drawable = this.skin.getDrawable("button" + this.count);
 	}
 	
 	public int x;
