@@ -16,7 +16,6 @@ public class GameLevelBase extends Stage {
 	public int bestKnown;
 	public int numSounds = 0;
 	public int numClicks = 0;
-	public int tileSize;
 	public float volume = 0.1f;
 	public float time = 0.0f;
 	

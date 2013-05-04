@@ -9,9 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
@@ -23,8 +21,9 @@ public class GameLevel extends GameLevelBase {
 	private Random random;
 	private Array<Array<TileActor>> buttons;
 	private Array<Vector2> resetData;
-	private long startTime;	
+	private long startTime = 0;
 	private Sound clickSound;
+	public int tileSize;
 
 	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48);
@@ -79,21 +78,6 @@ public class GameLevel extends GameLevelBase {
 	}
 	
 	public void initialize() {
-		final GameLevel gl = this;
-
-		ClickListener cll = new ClickListener() {
-			public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-				if (button == 1) {
-					TileActor a = gl.getTile((int)Math.floor(x / gl.tileSize), (int)Math.floor(y / gl.tileSize));
-					gl.getPaintbrush().pulse(a, 0, 1, false);
-					return true;
-				}
-				
-				return false;
-			}
-		};
-		this.addListener(cll);
-		
 		int numRandoms = this.difficulty.numRandoms(this.levelNum);
 		this.tileSize = this.difficulty.tileSize();		
 		this.bestKnown = numRandoms;
@@ -124,6 +108,23 @@ public class GameLevel extends GameLevelBase {
 		}
 	}
 
+	@Override
+	public boolean touchDown(int x, int y, int pointer, int button) {
+		int amount = 1;
+		if (button == 0) {
+			amount = -1;
+		}
+		
+		if (this.startTime == 0)
+			this.startTiming();
+		
+		y = (int)(this.getHeight() - y);
+		TileActor a = this.getTile((int)Math.floor(x / this.tileSize), (int)Math.floor(y / this.tileSize));
+		this.getPaintbrush().pulse(a, 0, amount, false);
+		this.numClicks++;
+		return true;
+	}
+	
 	public void startTiming() {
 		this.startTime = System.currentTimeMillis();
 	}
