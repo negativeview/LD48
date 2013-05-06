@@ -48,7 +48,6 @@ public class RecapScreen extends GameLevelBase {
 		ChangeListener cl = new ChangeListener() {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				Gdx.app.log("DEBUG", "111");
 				tmp.done = true;
 			}
 		};

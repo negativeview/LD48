@@ -30,7 +30,6 @@ public class SpiralPaintbrush extends Paintbrush {
 		
 //		if (!instant) {
 //		} else {
-			Gdx.app.log("DEBUG", "Direction: " + direction + " Count: " + count);
 			if (count >= target) {
 				direction += 1;
 				count = 0;
