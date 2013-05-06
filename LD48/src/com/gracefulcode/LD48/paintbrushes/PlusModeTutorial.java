@@ -2,7 +2,6 @@ package com.gracefulcode.LD48.paintbrushes;
 
 import java.util.Iterator;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -127,8 +126,6 @@ public class PlusModeTutorial extends Tutorial {
 	@Override
 	public void initialize() {
 		super.initialize();
-		
-		Gdx.app.log("DEBUG", "Initialize");
 		
 		this.window = new Window("Tutorial", skin);
 		this.window.setPosition(10,  10);

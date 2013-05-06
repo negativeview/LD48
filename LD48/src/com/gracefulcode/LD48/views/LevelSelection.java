@@ -36,6 +36,16 @@ public class LevelSelection extends LD48View {
 		}
 		
 		int i = 0;
+		
+		if (paintbrush.hasTutorialLevel()) {
+			i += 200;
+			TextButton tb = new TextButton("Tutorial", this.skin, "menuButton");
+			this.addActor(tb);
+			tb.setPosition(0, Gdx.graphics.getHeight() - i);
+			tb.setSize(MainMenuContainer.MENU_WIDTH, 160);
+			TutorialCallbackHack tch = new TutorialCallbackHack(this.ld48, paintbrush.getTutorial(new Difficulty()));
+			tb.addListener(tch);
+		}
 
 		i += 200;
 		TextButton tb = new TextButton("Level 1", this.skin, "menuButton");
@@ -45,17 +55,6 @@ public class LevelSelection extends LD48View {
 		LevelCallbackHack pch = new LevelCallbackHack(this.ld48, paintbrush, this.skin, 1);
 		tb.addListener(pch);
 
-		if (maxLevel != 1) {
-			i += 200;
-			tb = new TextButton("Level " + (int)(maxLevel / 2), this.skin, "menuButton");
-			this.addActor(tb);
-			tb.setPosition(0, Gdx.graphics.getHeight() - i);
-			tb.setSize(MainMenuContainer.MENU_WIDTH, 160);
-			pch = new LevelCallbackHack(this.ld48, paintbrush, this.skin, (int)(maxLevel / 2));
-			tb.addListener(pch);
-		}
-
-		
 		if (maxLevel != 0) {
 			i += 200;
 			tb = new TextButton("Level " + maxLevel, this.skin, "menuButton");
@@ -77,6 +76,22 @@ public class LevelSelection extends LD48View {
 			}
 		};
 		tb.addListener(cl);
+	}
+	
+	private class TutorialCallbackHack extends ChangeListener {
+		private Tutorial t;
+		private LD48 ld48;
+		
+		public TutorialCallbackHack(LD48 ld48, Tutorial t) {
+			this.ld48 = ld48;
+			this.t = t;
+		}
+
+		@Override
+		public void changed(ChangeEvent event, Actor actor) {
+			this.ld48.gotoGame(this.t);
+		}
+		
 	}
 
 	private class LevelCallbackHack extends ChangeListener {
