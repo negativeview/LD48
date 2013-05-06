@@ -5,11 +5,21 @@ import com.badlogic.gdx.scenes.scene2d.actions.ParallelAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SizeByAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
+import com.gracefulcode.LD48.difficulty.Difficulty;
 
 
 abstract public class Paintbrush {
 	public String name;
+	protected Skin skin;
+	protected LD48 ld48;
+	
+	public Paintbrush(Skin skin, LD48 ld48) {
+		this.skin = skin;
+		this.ld48 = ld48;
+	}
 
 	public abstract void pulse(final TileActor actor, final int direction, final int value, final boolean instant);
 
@@ -18,6 +28,14 @@ abstract public class Paintbrush {
 	}
 
 	public String getDescription() {
+		return null;
+	}
+	
+	public boolean hasTutorialLevel() {
+		return false;
+	}
+	
+	public Tutorial getTutorial(Difficulty difficulty) {
 		return null;
 	}
 	

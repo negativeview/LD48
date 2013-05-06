@@ -19,11 +19,11 @@ public class GameLevel extends GameLevelBase {
 	private Difficulty difficulty;
 	private Paintbrush paintbrush;
 	private Random random;
-	private Array<Array<TileActor>> buttons;
-	private Array<Vector2> resetData;
+	protected Array<Array<TileActor>> buttons;
+	protected Array<Vector2> resetData;
 	private long startTime = 0;
 	private Sound clickSound;
-	public int tileSize;
+	protected int tileSize;
 
 	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48);
@@ -77,6 +77,7 @@ public class GameLevel extends GameLevelBase {
 		}
 	}
 	
+	@Override
 	public void initialize() {
 		int numRandoms = this.difficulty.numRandoms(this.levelNum);
 		this.tileSize = this.difficulty.tileSize();		

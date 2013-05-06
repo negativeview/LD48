@@ -6,10 +6,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
+import com.gracefulcode.LD48.difficulty.Difficulty;
 
 public class PlusPaintbrush extends Paintbrush {
-	public PlusPaintbrush() {
+	public PlusPaintbrush(Skin skin, LD48 ld48) {
+		super(skin, ld48);
 		this.name = "plus";
 	}
 	
@@ -22,6 +26,16 @@ public class PlusPaintbrush extends Paintbrush {
 
 	public String getDescription() {
 		return "This is the easiest\npattern.";
+	}
+
+	@Override
+	public boolean hasTutorialLevel() {
+		return true;
+	}
+	
+	@Override
+	public Tutorial getTutorial(Difficulty difficulty) {
+		return new PlusModeTutorial(this.skin, this.ld48, difficulty, this);
 	}
 
 	@Override

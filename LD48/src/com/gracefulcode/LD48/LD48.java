@@ -132,7 +132,7 @@ public class LD48 implements ApplicationListener {
 		Gdx.input.setInputProcessor(this.stage);
 	}
 	
-	public void gotoGame(GameLevel gl) {
+	public void gotoGame(GameLevelBase gl) {
 		this.stage = gl;
 		gl.initialize();
 		stage.setCamera(camera);

@@ -32,6 +32,10 @@ public class GameLevelBase extends Stage {
 		return false;
 	}
 	
+	public void initialize() {
+		
+	}
+	
 	@Override
 	public boolean keyUp(int keycode) {
 		if (keycode == Input.Keys.ESCAPE) {

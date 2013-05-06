@@ -77,9 +77,9 @@ public class PaintbrushSelection extends LD48View {
 	
 	private void setupPaintbrushArray() {
 		this.paintbrushes = new Array<Paintbrush>();
-		this.paintbrushes.add(new PlusPaintbrush());
-		this.paintbrushes.add(new StarPaintbrush());
-		this.paintbrushes.add(new SpiralPaintbrush());
+		this.paintbrushes.add(new PlusPaintbrush(this.skin, this.ld48));
+		this.paintbrushes.add(new StarPaintbrush(this.skin, this.ld48));
+		this.paintbrushes.add(new SpiralPaintbrush(this.skin, this.ld48));
 	}
 
 	private class PaintbrushCallbackHack extends ChangeListener {
