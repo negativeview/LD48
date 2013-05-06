@@ -74,6 +74,9 @@ public class LD48 implements ApplicationListener {
 		np = new NinePatch(t, 0, 0, 0, 0);
 		this.skin.add("blackImage", np);
 		
+		this.skin.add("default", new BitmapFont(Gdx.files.internal("data/Batang-32.fnt"), false));
+		this.skin.add("small", new BitmapFont(Gdx.files.internal("data/Batang-15.fnt"), false));
+
 		ButtonStyle buttonStyle = new ButtonStyle();
 		buttonStyle.up = this.skin.getDrawable("whiteImage");
 		this.skin.add("default", buttonStyle);
@@ -93,8 +96,8 @@ public class LD48 implements ApplicationListener {
 		
 		WindowStyle windowStyle = new WindowStyle();
 		windowStyle.background = this.skin.getDrawable("windowBackground");
-		this.skin.add("default", new BitmapFont(Gdx.files.internal("data/DoppioOne.fnt"), false));
-		windowStyle.titleFont = this.skin.getFont("default");
+		windowStyle.titleFont = this.skin.getFont("small");
+		windowStyle.titleFontColor = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 		this.skin.add("default", windowStyle);
 		
 		TextButtonStyle tbStyle = new TextButtonStyle();
@@ -124,6 +127,10 @@ public class LD48 implements ApplicationListener {
 		labelStyle.font = this.skin.getFont("default");
 		this.skin.add("default", labelStyle);
 		
+		labelStyle = new LabelStyle();
+		labelStyle.font = this.skin.getFont("small");
+		this.skin.add("small", labelStyle);
+		
 		camera = new OrthographicCamera(w, h);
 		batch = new SpriteBatch();
 		
@@ -132,7 +139,7 @@ public class LD48 implements ApplicationListener {
 		Gdx.input.setInputProcessor(this.stage);
 	}
 	
-	public void gotoGame(GameLevel gl) {
+	public void gotoGame(GameLevelBase gl) {
 		this.stage = gl;
 		gl.initialize();
 		stage.setCamera(camera);
@@ -177,7 +184,7 @@ public class LD48 implements ApplicationListener {
 				Gdx.net.sendHttpRequest(req, listener);
 				
 				this.setupRecap(level);
-			} else if (this.stage.isRecapScreen()){
+			} else if (this.stage.isRecapScreen()) {
 				RecapScreen level = (RecapScreen)(this.stage);
 				GameLevel tmp = new GameLevel(level.getRealLevel().getLevelNum() + 1, this.skin, this, level.getRealLevel().getDifficulty(), level.getRealLevel().getPaintbrush());
 				this.gotoGame(tmp);

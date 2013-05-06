@@ -7,28 +7,18 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
 import com.badlogic.gdx.scenes.scene2d.actions.RemoveAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.gracefulcode.LD48.ColorScheme;
 import com.gracefulcode.LD48.GameLevelBase;
 import com.gracefulcode.LD48.LD48;
-import com.gracefulcode.LD48.difficulty.Difficulty;
-import com.gracefulcode.LD48.difficulty.EasyDifficulty;
-import com.gracefulcode.LD48.difficulty.HarderDifficulty;
-import com.gracefulcode.LD48.paintbrushes.PlusPaintbrush;
-import com.gracefulcode.LD48.paintbrushes.StarPaintbrush;
 import com.gracefulcode.LD48.views.MainMenuContainer;
 
 public class MainScreen extends GameLevelBase {
-	private Button button;
 	private Skin skin;
 	private boolean done = false;
 	private Image backgroundBackground;
@@ -67,102 +57,6 @@ public class MainScreen extends GameLevelBase {
 		this.addActor(mmc);
 	}
 	
-	public void setupNormal() {
-		final MainScreen tmp = this;
-		
-		Texture tex1 = new Texture(Gdx.files.internal("data/plus.png"));
-		Image image1 = new Image(tex1);
-		image1.setPosition(100,  100);
-		this.addActor(image1);
-		
-		this.button = new TextButton("YouTube Commentator", this.skin);
-		ChangeListener cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new Difficulty();
-				tmp.ld48.paintbrush = new PlusPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(10, 10);
-		this.addActor(button);
-
-		this.button = new TextButton("Normal", this.skin);
-		cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new EasyDifficulty();
-				tmp.ld48.paintbrush = new PlusPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(170, 10);
-		this.addActor(button);
-
-		this.button = new TextButton("Harder", this.skin);		
-		cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new HarderDifficulty();
-				tmp.ld48.paintbrush = new PlusPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(228, 10);
-		this.addActor(button);
-	}
-
-	public void setupFlower() {
-		final MainScreen tmp = this;
-		
-		Texture tex1 = new Texture(Gdx.files.internal("data/flower.png"));
-		Image image1 = new Image(tex1);
-		image1.setPosition(500,  100);
-		this.addActor(image1);
-		
-		this.button = new TextButton("YouTube Commentator", this.skin);		
-		ChangeListener cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new Difficulty();
-				tmp.ld48.paintbrush = new StarPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(410, 10);
-		this.addActor(button);
-
-		this.button = new TextButton("Normal", this.skin);		
-		cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new EasyDifficulty();
-				tmp.ld48.paintbrush = new StarPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(570, 10);
-		this.addActor(button);
-
-		this.button = new TextButton("Harder", this.skin);		
-		cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new HarderDifficulty();
-				tmp.ld48.paintbrush = new StarPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(628, 10);
-		this.addActor(button);
-	}
-
 	@Override
 	public boolean isRealLevel() {
 		return false;

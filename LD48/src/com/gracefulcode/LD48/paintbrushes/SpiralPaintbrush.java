@@ -3,12 +3,17 @@ package com.gracefulcode.LD48.paintbrushes;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
 
 public class SpiralPaintbrush extends Paintbrush {
+	public SpiralPaintbrush(Skin skin, LD48 ld48) {
+		super(skin, ld48);
+		this.name = "spiral";
+	}
+	
 	public Image getImage() {
 		FileHandle fh = Gdx.files.internal("data/spiral.png");
 		Texture tex = new Texture(fh);

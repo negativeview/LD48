@@ -1,14 +1,8 @@
 package com.gracefulcode.LD48;
 
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.utils.Array;
 
 public class GameLevelBase extends Stage {
 	protected Skin skin;
@@ -30,6 +24,10 @@ public class GameLevelBase extends Stage {
 	
 	public boolean isRecapScreen() {
 		return false;
+	}
+	
+	public void initialize() {
+		
 	}
 	
 	@Override

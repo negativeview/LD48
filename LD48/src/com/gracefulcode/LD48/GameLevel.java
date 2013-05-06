@@ -15,15 +15,15 @@ import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
 
 public class GameLevel extends GameLevelBase {
-	private int levelNum;
-	private Difficulty difficulty;
-	private Paintbrush paintbrush;
-	private Random random;
-	private Array<Array<TileActor>> buttons;
-	private Array<Vector2> resetData;
-	private long startTime = 0;
-	private Sound clickSound;
-	public int tileSize;
+	protected int levelNum;
+	protected Difficulty difficulty;
+	protected Paintbrush paintbrush;
+	protected Random random;
+	protected Array<Array<TileActor>> buttons;
+	protected Array<Vector2> resetData;
+	protected long startTime = 0;
+	protected Sound clickSound;
+	protected int tileSize;
 
 	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48);
@@ -77,11 +77,33 @@ public class GameLevel extends GameLevelBase {
 		}
 	}
 	
+	protected Vector2 getRandomVector() {
+		int x = this.random.nextInt((int)Math.floor(this.getWidth() / tileSize));
+		int y = this.random.nextInt((int)Math.floor(this.getHeight() / tileSize));
+		
+		return new Vector2(x, y);
+	}
+	
+	protected void doPulse(Vector2 tmp) {
+		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, true);
+	}
+	
+	protected void doRandoms(int numRandoms) {
+		this.resetData = new Array<Vector2>();
+		for (int i = 0; i < numRandoms; i++) {
+			Vector2 tmp = this.getRandomVector();
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
+		}		
+	}
+	
+	@Override
 	public void initialize() {
 		int numRandoms = this.difficulty.numRandoms(this.levelNum);
 		this.tileSize = this.difficulty.tileSize();		
 		this.bestKnown = numRandoms;
 		
+		this.buttons.clear();
 		for (int x = 0; x < this.getWidth(); x += tileSize) {
 			Array<TileActor> tmpArray = new Array<TileActor>();
 			this.buttons.add(tmpArray);
@@ -98,14 +120,7 @@ public class GameLevel extends GameLevelBase {
 			}
 		}
 		
-		this.resetData = new Array<Vector2>();
-		for (int i = 0; i < numRandoms; i++) {
-			int x = this.random.nextInt((int)Math.floor(this.getWidth() / tileSize));
-			int y = this.random.nextInt((int)Math.floor(this.getHeight() / tileSize));
-			
-			this.resetData.add(new Vector2(x, y));
-			this.paintbrush.pulse(this.getTile(x, y), 0, 1, true);
-		}
+		this.doRandoms(numRandoms);
 	}
 
 	@Override
