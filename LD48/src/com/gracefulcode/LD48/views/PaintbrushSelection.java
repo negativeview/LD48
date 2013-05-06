@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
 import com.gracefulcode.LD48.paintbrushes.PlusPaintbrush;
-import com.gracefulcode.LD48.paintbrushes.SpiralPaintbrush;
 import com.gracefulcode.LD48.paintbrushes.StarPaintbrush;
 
 public class PaintbrushSelection extends LD48View {
@@ -79,7 +78,7 @@ public class PaintbrushSelection extends LD48View {
 		this.paintbrushes = new Array<Paintbrush>();
 		this.paintbrushes.add(new PlusPaintbrush(this.skin, this.ld48));
 		this.paintbrushes.add(new StarPaintbrush(this.skin, this.ld48));
-		this.paintbrushes.add(new SpiralPaintbrush(this.skin, this.ld48));
+//		this.paintbrushes.add(new SpiralPaintbrush(this.skin, this.ld48));
 	}
 
 	private class PaintbrushCallbackHack extends ChangeListener {

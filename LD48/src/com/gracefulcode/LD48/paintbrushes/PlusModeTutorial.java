@@ -2,16 +2,19 @@ package com.gracefulcode.LD48.paintbrushes;
 
 import java.util.Iterator;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 
 public class PlusModeTutorial extends Tutorial {
 	Window window;
 	Label label;
+	int mode = 1;
 	
 	public PlusModeTutorial(Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48, difficulty, paintbrush);
@@ -43,6 +46,42 @@ public class PlusModeTutorial extends Tutorial {
 		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, false);
 	}
 
+	@Override
+	protected void doRandoms(int numRandoms) {
+		this.resetData = new Array<Vector2>();
+
+		Vector2 tmp;
+		switch (this.mode) {
+		case 1:
+			tmp = new Vector2(15, 7);
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
+			break;
+		case 2:
+			tmp = new Vector2(15, 7);
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
+			
+			tmp = new Vector2(22, 15);
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
+			break;
+		case 3:
+			tmp = new Vector2(15, 7);
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
+			
+			tmp = new Vector2(22, 15);
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
+			
+			tmp = new Vector2(10, 15);
+			this.resetData.add(tmp);
+			this.doPulse(tmp);			
+		}
+	}
+	
+
 	private void positionTutorialOne() {
 		Vector2 centralPoint = this.resetData.first();
 		
@@ -67,18 +106,48 @@ public class PlusModeTutorial extends Tutorial {
 	}
 
 	@Override
+	public boolean isRealLevel() {
+		if (this.mode <= 3)
+			return false;
+		
+		return true;
+	}
+
+	public boolean isDone() {
+		if (super.isDone()) {
+			this.mode++;
+			if (this.mode == 4)
+				return true;
+			this.initialize();
+		}
+		
+		return false;
+	}
+
+	@Override
 	public void initialize() {
 		super.initialize();
+		
+		Gdx.app.log("DEBUG", "Initialize");
 		
 		this.window = new Window("Tutorial", skin);
 		this.window.setPosition(10,  10);
 		this.window.setSize(200, 200);
 		this.window.padLeft(0);
 		
-		this.label = new Label("It is your goal to undo\nwhat the computer has\ndone.\n\nClick on the center of the\nplus in order to do so.", skin, "small");
+		switch (this.mode) {
+		case 1:
+			this.label = new Label("It is your goal to undo\nwhat the computer has\ndone.\n\nClick on the center of the\nplus in order to do so.", skin, "small");
+			break;
+		case 2:
+			this.label = new Label("As things progress,\nthe computer will take\nmore actions.\n\nYou will need to figure\nout what it did.", skin, "small");
+			break;
+		case 3:
+			this.label = new Label("Patterns will form that\nyou will soon begin\nto recognize.", skin, "small");
+		}
+		
 		this.window.add(this.label).left();
 		this.addActor(this.window);
-		
 		this.positionTutorialOne();
 	}
 

@@ -184,7 +184,7 @@ public class LD48 implements ApplicationListener {
 				Gdx.net.sendHttpRequest(req, listener);
 				
 				this.setupRecap(level);
-			} else if (this.stage.isRecapScreen()){
+			} else if (this.stage.isRecapScreen()) {
 				RecapScreen level = (RecapScreen)(this.stage);
 				GameLevel tmp = new GameLevel(level.getRealLevel().getLevelNum() + 1, this.skin, this, level.getRealLevel().getDifficulty(), level.getRealLevel().getPaintbrush());
 				this.gotoGame(tmp);

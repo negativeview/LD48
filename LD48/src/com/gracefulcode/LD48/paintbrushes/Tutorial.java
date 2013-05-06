@@ -9,4 +9,9 @@ public class Tutorial extends GameLevel {
 	public Tutorial(Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(0, skin, ld48, difficulty, paintbrush);
 	}
+
+	@Override
+	public boolean isRealLevel() {
+		return false;
+	}
 }

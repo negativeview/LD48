@@ -88,12 +88,22 @@ public class GameLevel extends GameLevelBase {
 		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, true);
 	}
 	
+	protected void doRandoms(int numRandoms) {
+		this.resetData = new Array<Vector2>();
+		for (int i = 0; i < numRandoms; i++) {
+			Vector2 tmp = this.getRandomVector();
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
+		}		
+	}
+	
 	@Override
 	public void initialize() {
 		int numRandoms = this.difficulty.numRandoms(this.levelNum);
 		this.tileSize = this.difficulty.tileSize();		
 		this.bestKnown = numRandoms;
 		
+		this.buttons.clear();
 		for (int x = 0; x < this.getWidth(); x += tileSize) {
 			Array<TileActor> tmpArray = new Array<TileActor>();
 			this.buttons.add(tmpArray);
@@ -110,12 +120,7 @@ public class GameLevel extends GameLevelBase {
 			}
 		}
 		
-		this.resetData = new Array<Vector2>();
-		for (int i = 0; i < numRandoms; i++) {
-			Vector2 tmp = this.getRandomVector();
-			this.resetData.add(tmp);
-			this.doPulse(tmp);
-		}
+		this.doRandoms(numRandoms);
 	}
 
 	@Override
