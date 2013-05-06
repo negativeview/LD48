@@ -2,7 +2,6 @@ package com.gracefulcode.LD48.paintbrushes;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.gracefulcode.LD48.GameLevel;
-import com.gracefulcode.LD48.GameLevelBase;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 

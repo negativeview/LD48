@@ -2,15 +2,11 @@ package com.gracefulcode.LD48.paintbrushes;
 
 import java.util.Iterator;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
-import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.LD48;
-import com.gracefulcode.LD48.TileActor;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 
 public class PlusModeTutorial extends Tutorial {

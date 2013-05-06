@@ -102,8 +102,6 @@ public class PaintbrushSelection extends LD48View {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//			GameLevel gl = new GameLevel(0, this.skin, this.ld48, new Difficulty(), this.paintbrush);
-//			ld48.gotoGame(gl);
 		}
 	}
 }
