@@ -15,14 +15,14 @@ import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
 
 public class GameLevel extends GameLevelBase {
-	private int levelNum;
-	private Difficulty difficulty;
-	private Paintbrush paintbrush;
-	private Random random;
+	protected int levelNum;
+	protected Difficulty difficulty;
+	protected Paintbrush paintbrush;
+	protected Random random;
 	protected Array<Array<TileActor>> buttons;
 	protected Array<Vector2> resetData;
-	private long startTime = 0;
-	private Sound clickSound;
+	protected long startTime = 0;
+	protected Sound clickSound;
 	protected int tileSize;
 
 	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
@@ -104,6 +104,7 @@ public class GameLevel extends GameLevelBase {
 			int x = this.random.nextInt((int)Math.floor(this.getWidth() / tileSize));
 			int y = this.random.nextInt((int)Math.floor(this.getHeight() / tileSize));
 			
+			Gdx.app.log("DEBUG", "Reset data: " + x + " " + y);
 			this.resetData.add(new Vector2(x, y));
 			this.paintbrush.pulse(this.getTile(x, y), 0, 1, true);
 		}

@@ -76,7 +76,6 @@ public class StarPaintbrush extends Paintbrush {
 			};
 			
 			sa.addAction(action);
-			actor.toFront();
 			actor.addAction(sa);
 		} else {
 			if (direction == 0 || direction == 1)
