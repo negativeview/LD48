@@ -67,54 +67,6 @@ public class MainScreen extends GameLevelBase {
 		this.addActor(mmc);
 	}
 	
-	public void setupNormal() {
-		final MainScreen tmp = this;
-		
-		Texture tex1 = new Texture(Gdx.files.internal("data/plus.png"));
-		Image image1 = new Image(tex1);
-		image1.setPosition(100,  100);
-		this.addActor(image1);
-		
-		this.button = new TextButton("YouTube Commentator", this.skin);
-		ChangeListener cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new Difficulty();
-				tmp.ld48.paintbrush = new PlusPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(10, 10);
-		this.addActor(button);
-
-		this.button = new TextButton("Normal", this.skin);
-		cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new EasyDifficulty();
-				tmp.ld48.paintbrush = new PlusPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(170, 10);
-		this.addActor(button);
-
-		this.button = new TextButton("Harder", this.skin);		
-		cl = new ChangeListener() {
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				tmp.ld48.difficulty = new HarderDifficulty();
-				tmp.ld48.paintbrush = new PlusPaintbrush();
-				tmp.done = true;
-			}
-		};
-		this.button.addListener(cl);
-		this.button.setPosition(228, 10);
-		this.addActor(button);
-	}
-
 	public void setupFlower() {
 		final MainScreen tmp = this;
 		
