@@ -9,6 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.gracefulcode.LD48.TileActor;
 
 public class SpiralPaintbrush extends Paintbrush {
+	public SpiralPaintbrush() {
+		this.name = "spiral";
+	}
+	
 	public Image getImage() {
 		FileHandle fh = Gdx.files.internal("data/spiral.png");
 		Texture tex = new Texture(fh);

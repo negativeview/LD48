@@ -10,6 +10,7 @@ import com.gracefulcode.LD48.TileActor;
 
 public class StarPaintbrush extends Paintbrush {
 	public StarPaintbrush() {
+		this.name = "star";
 	}
 	
 	public Image getImage() {

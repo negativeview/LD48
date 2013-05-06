@@ -9,6 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.gracefulcode.LD48.TileActor;
 
 public class PlusPaintbrush extends Paintbrush {
+	public PlusPaintbrush() {
+		this.name = "plus";
+	}
+	
 	public Image getImage() {
 		FileHandle fh = Gdx.files.internal("data/plus.png");
 		Texture tex = new Texture(fh);

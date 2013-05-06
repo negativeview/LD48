@@ -7,28 +7,18 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.AlphaAction;
 import com.badlogic.gdx.scenes.scene2d.actions.RemoveAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.gracefulcode.LD48.ColorScheme;
 import com.gracefulcode.LD48.GameLevelBase;
 import com.gracefulcode.LD48.LD48;
-import com.gracefulcode.LD48.difficulty.Difficulty;
-import com.gracefulcode.LD48.difficulty.EasyDifficulty;
-import com.gracefulcode.LD48.difficulty.HarderDifficulty;
-import com.gracefulcode.LD48.paintbrushes.PlusPaintbrush;
-import com.gracefulcode.LD48.paintbrushes.StarPaintbrush;
 import com.gracefulcode.LD48.views.MainMenuContainer;
 
 public class MainScreen extends GameLevelBase {
-	private Button button;
 	private Skin skin;
 	private boolean done = false;
 	private Image backgroundBackground;

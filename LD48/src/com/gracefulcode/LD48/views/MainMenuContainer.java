@@ -41,7 +41,6 @@ public class MainMenuContainer extends LD48View {
 	
 	public void addLD48View(LD48View view) {
 		if (this.viewStack.size > 0) {
-			Gdx.app.log("Here", "Here");
 			SequenceAction sa = new SequenceAction();
 			MoveToAction mta = new MoveToAction();
 			mta.setPosition(0, -Gdx.graphics.getHeight());
