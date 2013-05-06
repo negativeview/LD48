@@ -1,6 +1,7 @@
 package com.gracefulcode.LD48.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -23,7 +24,15 @@ public class RecapScreen extends GameLevelBase {
 		super(skin, ld48);	
 		this.skin = skin;
 		this.realLevel = level;
+
+		Preferences preferences = Gdx.app.getPreferences("maxLevels");
+		int maxLevel = preferences.getInteger(level.getPaintbrush().name, 0);
 		
+		if (maxLevel < level.getLevelNum()) {
+			preferences.putInteger(level.getPaintbrush().name, level.getLevelNum());
+			preferences.flush();
+		}
+
 		this.label = new Label("YOU JUST BEAT LEVEL " + level.getLevelNum(), this.skin);
 		this.label.setPosition(30, 340);
 		this.addActor(this.label);
