@@ -77,6 +77,17 @@ public class GameLevel extends GameLevelBase {
 		}
 	}
 	
+	protected Vector2 getRandomVector() {
+		int x = this.random.nextInt((int)Math.floor(this.getWidth() / tileSize));
+		int y = this.random.nextInt((int)Math.floor(this.getHeight() / tileSize));
+		
+		return new Vector2(x, y);
+	}
+	
+	protected void doPulse(Vector2 tmp) {
+		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, true);
+	}
+	
 	@Override
 	public void initialize() {
 		int numRandoms = this.difficulty.numRandoms(this.levelNum);
@@ -101,12 +112,9 @@ public class GameLevel extends GameLevelBase {
 		
 		this.resetData = new Array<Vector2>();
 		for (int i = 0; i < numRandoms; i++) {
-			int x = this.random.nextInt((int)Math.floor(this.getWidth() / tileSize));
-			int y = this.random.nextInt((int)Math.floor(this.getHeight() / tileSize));
-			
-			Gdx.app.log("DEBUG", "Reset data: " + x + " " + y);
-			this.resetData.add(new Vector2(x, y));
-			this.paintbrush.pulse(this.getTile(x, y), 0, 1, true);
+			Vector2 tmp = this.getRandomVector();
+			this.resetData.add(tmp);
+			this.doPulse(tmp);
 		}
 	}
 

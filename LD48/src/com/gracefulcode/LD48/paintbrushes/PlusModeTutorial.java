@@ -32,7 +32,17 @@ public class PlusModeTutorial extends Tutorial {
 		
 		return false;
 	}
-	
+
+	@Override
+	protected Vector2 getRandomVector() {
+		return new Vector2(15, 7);
+	}
+
+	@Override
+	protected void doPulse(Vector2 tmp) {
+		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, false);
+	}
+
 	private void positionTutorialOne() {
 		Vector2 centralPoint = this.resetData.first();
 		
