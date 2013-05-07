@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
+import com.gracefulcode.LD48.difficulty.Difficulty;
 
 public class StarPaintbrush extends Paintbrush {
 	public StarPaintbrush(Skin skin, LD48 ld48) {
@@ -25,6 +26,16 @@ public class StarPaintbrush extends Paintbrush {
 
 	public String getDescription() {
 		return "This pattern is more\ncomplex and fun once\nyou master the basics.";
+	}
+
+	@Override
+	public boolean hasTutorialLevel() {
+		return true;
+	}
+	
+	@Override
+	public Tutorial getTutorial(Difficulty difficulty) {
+		return new StarModeTutorial(this.skin, this.ld48, difficulty, this);
 	}
 
 	@Override
