@@ -168,7 +168,7 @@ public class GameLevel extends GameLevelBase {
 		for (int x = 0; x < this.getWidth(); x += tileSize) {
 			for (int y = 0; y < this.getHeight(); y += tileSize) {
 				TileActor button = this.getTile((int)Math.floor(x / tileSize), (int)Math.floor(y / tileSize));
-				button.count = 0;
+				button.setCount(0);
 			}
 		}
 		
@@ -187,7 +187,7 @@ public class GameLevel extends GameLevelBase {
 			for (int m = 0; m < taa.size; m++) {
 				TileActor ta = taa.get(m);
 				
-				if (ta.count != 0)
+				if (ta.getCount() != 0)
 					return false;
 			}
 		}

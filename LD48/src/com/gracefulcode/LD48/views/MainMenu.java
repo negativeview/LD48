@@ -42,8 +42,8 @@ public class MainMenu extends LD48View {
 			}	
 		};
 		this.newGameButton = new TextButton("New Game", this.skin, "menuButton");
-		this.newGameButton.setPosition(0, 400);
-		this.newGameButton.setSize(MainMenuContainer.MENU_WIDTH, 40);
+		this.newGameButton.setPosition(0, 360);
+		this.newGameButton.setSize(MainMenuContainer.MENU_WIDTH, 120);
 		this.newGameButton.addListener(cl);
 		this.addActor(this.newGameButton);
 

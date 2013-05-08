@@ -4,11 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
+import com.gracefulcode.LD48.animation.actions.PlusCenterAction;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 
 public class PlusPaintbrush extends Paintbrush {
@@ -50,42 +50,7 @@ public class PlusPaintbrush extends Paintbrush {
 				actor.level.setSound(1);
 			}
 
-			SequenceAction sa = actor.getBaseAction();
-			
-			final TileActor tmp = actor;
-			final Paintbrush tmp2 = this;
-			Action action = new Action() {
-				public boolean act(float delta) {
-					if (direction == 0 || direction == 1) {
-						if (tmp.level.getTile(tmp.x - 1, tmp.y) != null) {
-							tmp2.pulse(tmp.level.getTile(tmp.x - 1, tmp.y), 1, value, false);
-						}
-					}
-					
-					if (direction == 0 || direction == 2) {
-						if (tmp.level.getTile(tmp.x + 1, tmp.y) != null) {
-							tmp2.pulse(tmp.level.getTile(tmp.x + 1, tmp.y), 2, value, false);						
-						}
-					}
-					
-					if (direction == 0 || direction == 3) {
-						if (tmp.level.getTile(tmp.x, tmp.y - 1) != null) {
-							tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y - 1), 3, value, false);
-						}
-					}
-					
-					if (direction == 0 || direction == 4) {
-						if (tmp.level.getTile(tmp.x, tmp.y + 1) != null) {
-							tmp2.pulse(tmp.level.getTile(tmp.x, tmp.y + 1), 4, value, false);
-						}
-					}
-					
-					tmp.level.setSound(-1);
-					return true;
-				}
-			};
-			
-			sa.addAction(action);
+			Action sa = new PlusCenterAction((int)(actor.getWidth() / 2), 0.02f, value);			
 			actor.addAction(sa);
 		} else {
 			if (direction == 0 || direction == 1) {

@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 public class TileActor extends Actor {
 	public LD48 ld48;
-	public int count = 0;
+	private int count = 0;
 	public GameLevel level;
 	private Skin skin;
 	private int colorCount;
@@ -53,5 +53,13 @@ public class TileActor extends Actor {
 	
 	public SequenceAction getBaseAction() {
 		return this.baseAction;
+	}
+
+	public void setCount(int i) {
+		this.changeCount(-1 * this.count);
+	}
+
+	public int getCount() {
+		return this.count;
 	}
 }

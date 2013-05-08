@@ -10,7 +10,6 @@ import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 
-
 abstract public class Paintbrush {
 	public String name;
 	protected Skin skin;
