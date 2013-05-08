@@ -37,20 +37,23 @@ public class RecapScreen extends GameLevelBase {
 		this.label.setPosition(30, 340);
 		this.addActor(this.label);
 		
-		this.label = new Label("You did it in " + level.numClicks + " clicks!!!", this.skin);
+		this.label = new Label("Clicks: " + level.numClicks, this.skin);
 		this.label.setPosition(30, 300);
 		this.addActor(this.label);
 
-		this.label = new Label("(The best known-possible score is " + level.bestKnown + ")", this.skin);
+		this.label = new Label("Optimal: " + level.bestKnown, this.skin);
 		this.label.setPosition(30, 260);
 		this.addActor(this.label);
 		
-		this.label = new Label("It took you " + (int)level.time + ((int)level.time == 1 ? " second" : " seconds"), this.skin);
+		this.label = new Label("Time: " + (int)level.time + ((int)level.time == 1 ? " second" : " seconds"), this.skin);
 		this.label.setPosition(30, 220);
 		this.addActor(this.label);
 		
-		this.button = new TextButton("Continue", this.skin);
-		this.button.setPosition(30, 30);		
+		this.button = new TextButton("Continue", this.skin, "small");
+		this.button.setPosition(30, 30);
+		this.button.pad(10.0f);
+		this.button.setWidth(200);
+		this.button.setHeight(100);
 		this.addActor(button);
 		
 		final RecapScreen tmp = this;

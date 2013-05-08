@@ -4,12 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Action;
-import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
-import com.gracefulcode.LD48.animation.actions.PlusCenterAction;
 import com.gracefulcode.LD48.animation.actions.StarCenterAction;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 

@@ -64,7 +64,7 @@ public class LD48 implements ApplicationListener {
 		this.music = Gdx.audio.newMusic(Gdx.files.internal("data/music.mp3"));
 		this.music.setVolume(0.1f);
 		this.music.setLooping(true);
-		//this.music.play();
+//		this.music.play();
 		
 		p = new Pixmap(1024, 1024, Pixmap.Format.RGB888);
 		p.setColor(new Color(0, 0, 0, 1));
@@ -103,7 +103,6 @@ public class LD48 implements ApplicationListener {
 		TextButtonStyle tbStyle = new TextButtonStyle();
 		tbStyle.font = this.skin.getFont("default");
 		tbStyle.up = this.skin.getDrawable("buttonBackground");
-		//tbStyle.checked = this.skin.getDrawable("buttonDownBackground");
 		this.skin.add("default", tbStyle);
 
 		tbStyle = new TextButtonStyle();
@@ -111,6 +110,13 @@ public class LD48 implements ApplicationListener {
 		tbStyle.up = this.skin.getDrawable("buttonBackground");
 		tbStyle.checked = this.skin.getDrawable("buttonDownBackground");
 		this.skin.add("checkable", tbStyle);
+
+		tbStyle = new TextButtonStyle();
+		tbStyle.font = this.skin.getFont("default");
+		tbStyle.up = this.skin.getDrawable("buttonBackground");
+		tbStyle.checked = this.skin.getDrawable("buttonDownBackground");
+		tbStyle.fontColor = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+		this.skin.add("small", tbStyle);
 
 		tbStyle = new TextButtonStyle();
 		tbStyle.font = this.skin.getFont("default");
