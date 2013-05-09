@@ -35,39 +35,42 @@ public class LevelSelection extends LD48View {
 			return;
 		}
 		
-		int i = 0;
+		float interval = Gdx.graphics.getHeight() / 13.0f;
+		
+		float i = interval;
 		
 		if (paintbrush.hasTutorialLevel()) {
-			i += 200;
 			TextButton tb = new TextButton("Tutorial", this.skin, "menuButton");
 			this.addActor(tb);
-			tb.setPosition(0, Gdx.graphics.getHeight() - i);
-			tb.setSize(MainMenuContainer.MENU_WIDTH, 160);
+			tb.setPosition(0, Gdx.graphics.getHeight() - i - (interval * 3));
+			tb.setSize(MainMenuContainer.MENU_WIDTH, interval * 3);
 			TutorialCallbackHack tch = new TutorialCallbackHack(this.ld48, paintbrush.getTutorial(new Difficulty()));
 			tb.addListener(tch);
+			
+			i += (interval * 4);
 		}
 
-		i += 200;
 		TextButton tb = new TextButton("Level 1", this.skin, "menuButton");
 		this.addActor(tb);
-		tb.setPosition(0, Gdx.graphics.getHeight() - i);
-		tb.setSize(MainMenuContainer.MENU_WIDTH, 160);
+		tb.setPosition(0, Gdx.graphics.getHeight() - i - (interval * 3));
+		tb.setSize(MainMenuContainer.MENU_WIDTH, interval * 3);
 		LevelCallbackHack pch = new LevelCallbackHack(this.ld48, paintbrush, this.skin, 1);
 		tb.addListener(pch);
+		
+		i += (interval * 4);
 
 		if (maxLevel != 0) {
-			i += 200;
 			tb = new TextButton("Level " + maxLevel, this.skin, "menuButton");
 			this.addActor(tb);
-			tb.setPosition(0, Gdx.graphics.getHeight() - i);
-			tb.setSize(MainMenuContainer.MENU_WIDTH, 160);
+			tb.setPosition(0, Gdx.graphics.getHeight() - i - (interval * 3));
+			tb.setSize(MainMenuContainer.MENU_WIDTH, interval * 3);
 			pch = new LevelCallbackHack(this.ld48, paintbrush, this.skin, maxLevel);
 			tb.addListener(pch);
 		}
 		
 
 		tb = new TextButton("Back", this.skin, "menuButton");
-		tb.setPosition(20, 20);
+		tb.setPosition(0, 0);
 		this.addActor(tb);
 		ChangeListener cl = new ChangeListener() {
 			@Override
@@ -75,6 +78,7 @@ public class LevelSelection extends LD48View {
 				mainMenuContainer.popView();
 			}
 		};
+		tb.setSize(100, interval);
 		tb.addListener(cl);
 	}
 	

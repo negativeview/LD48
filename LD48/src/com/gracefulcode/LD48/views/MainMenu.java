@@ -1,5 +1,6 @@
 package com.gracefulcode.LD48.views;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -24,11 +25,11 @@ public class MainMenu extends LD48View {
 		ChangeListener cl;
 		
 		this.gameTitleLabel = new Label("Exploding Boxes of Cleanliness", this.skin);
-		this.gameTitleLabel.setPosition(25, 632);
+		this.gameTitleLabel.setPosition(25, LD48.fixY(Gdx.graphics.getHeight() - (LD48.TILE_SIZE * 2) + 4));
 		this.addActor(this.gameTitleLabel);
 		
 		this.creditLabel = new Label("by Daniel Grace", this.skin);
-		this.creditLabel.setPosition(350, 592);
+		this.creditLabel.setPosition(350, LD48.fixY(Gdx.graphics.getHeight() - (LD48.TILE_SIZE * 3) + 4));
 		this.addActor(this.creditLabel);
 		
 		cl = new ChangeListener() {
@@ -42,14 +43,14 @@ public class MainMenu extends LD48View {
 			}	
 		};
 		this.newGameButton = new TextButton("New Game", this.skin, "menuButton");
-		this.newGameButton.setPosition(0, 360);
+		this.newGameButton.setPosition(0, LD48.fixY(Gdx.graphics.getHeight() - (LD48.TILE_SIZE * 7) + 8));
 		this.newGameButton.setSize(MainMenuContainer.MENU_WIDTH, 120);
 		this.newGameButton.addListener(cl);
 		this.addActor(this.newGameButton);
 
 		this.exitButton = new TextButton("Exit", this.skin, "menuButton");
-		this.exitButton.setPosition(0, 40);
-		this.exitButton.setSize(MainMenuContainer.MENU_WIDTH, 40);
+		this.exitButton.setPosition(0, LD48.fixY(LD48.TILE_SIZE));
+		this.exitButton.setSize(MainMenuContainer.MENU_WIDTH, LD48.TILE_SIZE * 3);
 		this.addActor(this.exitButton);
 	}
 }
