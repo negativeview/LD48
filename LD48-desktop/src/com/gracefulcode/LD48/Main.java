@@ -9,7 +9,7 @@ public class Main {
 		cfg.title = "LD48";
 		cfg.useGL20 = true;
 		cfg.width = 1280;
-		cfg.height = 720;
+		cfg.height = 552;
 		
 		new LwjglApplication(new LD48(40), cfg);
 	}

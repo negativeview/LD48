@@ -84,7 +84,10 @@ public class MainScreen extends GameLevelBase {
 				Image im = new Image(t);
 				im.setZIndex(10);
 				
-				im.setPosition((x * LD48.TILE_SIZE) + 1,  (y * LD48.TILE_SIZE));
+				im.setPosition(
+					LD48.fixX((x * LD48.TILE_SIZE) + 1),
+					LD48.fixY(y * LD48.TILE_SIZE)
+				);
 				im.setColor(0, 0, 0, 0);
 				this.tileHolder.addActor(im);
 				

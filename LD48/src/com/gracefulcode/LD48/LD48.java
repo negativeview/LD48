@@ -42,6 +42,14 @@ public class LD48 implements ApplicationListener {
 		LD48.TILE_SIZE = tileSize;
 	}
 	
+	static public int fixX(int x) {
+		return x;
+	}
+	
+	static public int fixY(int y) {
+		return y + (Gdx.graphics.getHeight() % LD48.TILE_SIZE) - LD48.TILE_SIZE;
+	}
+	
 	@Override
 	public void create() {		
 		float w = Gdx.graphics.getWidth();
