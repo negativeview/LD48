@@ -15,7 +15,7 @@ public class GameLevelBase extends Stage {
 	
 	public GameLevelBase(Skin skin, LD48 ld48) {
 		this.skin = skin;
-		this.ld48 = ld48;				
+		this.ld48 = ld48;
 	}
 	
 	public boolean isRealLevel() {

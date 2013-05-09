@@ -31,17 +31,17 @@ public class MainScreen extends GameLevelBase {
 		
 		this.skin = skin;
 		
-		Pixmap p = new Pixmap(1280, 720, Pixmap.Format.RGB888);
+		Pixmap p = new Pixmap((int)this.getWidth(), (int)this.getHeight(), Pixmap.Format.RGB888);
 		p.setColor(new Color(1, 1, 1, 1));
 		p.fill();
 		
 		p.setColor(new Color(0.0f, 0.0f, 0.0f, 1));
 		
-		for (int i = 0; i < 720; i += LD48.TILE_SIZE) {
-			p.drawLine(0,  i, 1280, i);			
+		for (int i = 0; i < this.getHeight(); i += LD48.TILE_SIZE) {
+			p.drawLine(0,  i, (int)this.getWidth(), i);			
 		}
-		for (int i = 0; i < 1280; i += LD48.TILE_SIZE) {
-			p.drawLine(i, 0, i, 720);
+		for (int i = 0; i < this.getWidth(); i += LD48.TILE_SIZE) {
+			p.drawLine(i, 0, i, (int)this.getHeight());
 		}
 		
 		Texture tex = new Texture(p);

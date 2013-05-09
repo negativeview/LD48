@@ -139,6 +139,7 @@ public class LD48 implements ApplicationListener {
 		
 		camera = new OrthographicCamera(w, h);
 		batch = new SpriteBatch();
+		batch.disableBlending();
 		
 		this.stage = new MainScreen(this.skin, this);
 		this.stage.setCamera(camera);

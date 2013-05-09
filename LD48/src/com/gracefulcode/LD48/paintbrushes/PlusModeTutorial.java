@@ -29,29 +29,29 @@ public class PlusModeTutorial extends Tutorial {
 		Vector2 tmp;
 		switch (this.mode) {
 		case 1:
-			tmp = new Vector2(15, 7);
+			tmp = new Vector2(1, 1);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			break;
 		case 2:
-			tmp = new Vector2(15, 7);
+			tmp = new Vector2(1, 1);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(22, 15);
+			tmp = new Vector2(5, 5);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			break;
 		case 3:
-			tmp = new Vector2(15, 7);
+			tmp = new Vector2(1, 1);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(22, 15);
+			tmp = new Vector2(5, 5);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(10, 15);
+			tmp = new Vector2(1, 5);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);			
 		}

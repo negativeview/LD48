@@ -1,5 +1,6 @@
 package com.gracefulcode.LD48;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
@@ -12,7 +13,7 @@ public class TileActor extends Actor {
 	public GameLevel level;
 	private Skin skin;
 	private int colorCount;
-	private Drawable drawable;
+	private Texture drawable;
 	
 	public TileActor(Skin skin, LD48 ld48, int x, int y, int colorCount, GameLevel level) {
 		this.skin = skin;
@@ -26,7 +27,7 @@ public class TileActor extends Actor {
 	}
 	
 	public void draw(SpriteBatch batch, float alpha) {
-		this.drawable.draw(batch, this.x * LD48.TILE_SIZE, this.y * LD48.TILE_SIZE, LD48.TILE_SIZE, LD48.TILE_SIZE);
+		batch.draw(this.drawable, this.x * LD48.TILE_SIZE, this.y * LD48.TILE_SIZE);
 	}
 	
 	public void changeCount(int by) {
@@ -40,7 +41,7 @@ public class TileActor extends Actor {
 			this.count += this.colorCount;
 		}
 		
-		this.drawable = this.skin.getDrawable("button" + this.count);
+		this.drawable = this.skin.get("button" + this.count, Texture.class);
 	}
 	
 	public int x;
