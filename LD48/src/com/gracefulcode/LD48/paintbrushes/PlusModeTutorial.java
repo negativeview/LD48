@@ -25,6 +25,8 @@ public class PlusModeTutorial extends Tutorial {
 	@Override
 	protected void doRandoms(int numRandoms) {
 		this.resetData = new Array<Vector2>();
+		
+		int offset = (int) Math.ceil(240 / LD48.TILE_SIZE);
 
 		Vector2 tmp;
 		switch (this.mode) {
@@ -38,7 +40,7 @@ public class PlusModeTutorial extends Tutorial {
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(5, 5);
+			tmp = new Vector2(2 + offset, 2 + offset);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			break;
@@ -47,11 +49,11 @@ public class PlusModeTutorial extends Tutorial {
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(5, 5);
+			tmp = new Vector2(2 + offset, 2 + offset);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(1, 5);
+			tmp = new Vector2(5 + offset, 2 + offset);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);			
 		}

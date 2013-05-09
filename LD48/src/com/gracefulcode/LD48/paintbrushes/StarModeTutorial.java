@@ -46,34 +46,32 @@ public class StarModeTutorial extends Tutorial {
 	protected void doRandoms(int numRandoms) {
 		this.resetData = new Array<Vector2>();
 
+		int offset = (int) Math.ceil(240 / LD48.TILE_SIZE);
+
 		Vector2 tmp;
 		switch (this.mode) {
 		case 1:
-			tmp = new Vector2(15, 7);
+			tmp = new Vector2(1, 1);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			break;
 		case 2:
-			tmp = new Vector2(5, 7);
+			tmp = new Vector2(1, 1);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(25, 15);
+			tmp = new Vector2(2 + offset, 2 + offset);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			break;
 		case 3:
-			tmp = new Vector2(15, 3);
+			tmp = new Vector2(1, 1);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
 			
-			tmp = new Vector2(22, 15);
+			tmp = new Vector2(2 + offset, 1);
 			this.resetData.add(tmp);
 			this.doPulse(tmp);
-			
-			tmp = new Vector2(8, 15);
-			this.resetData.add(tmp);
-			this.doPulse(tmp);			
 		}
 	}
 	
