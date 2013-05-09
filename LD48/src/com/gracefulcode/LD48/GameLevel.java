@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.difficulty.Difficulty;
@@ -24,6 +25,7 @@ public class GameLevel extends GameLevelBase {
 	protected long startTime = 0;
 	protected Sound clickSound;
 	protected int tileSize;
+	protected Image backgroundImage;
 
 	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48);
@@ -40,6 +42,20 @@ public class GameLevel extends GameLevelBase {
 		this.addDrawable(3, new Color(162.0f / 255.0f, 93.0f / 255.0f, 0.0f / 255.0f, 1.0f));
 		this.addDrawable(4, new Color(242.0f / 255.0f, 135.0f / 255.0f, 5.0f / 255.0f, 1.0f));
 		this.addDrawable(5, new Color(246.0f / 255.0f, 205.0f / 255.0f, 91.0f / 255.0f, 1.0f));
+		
+		Pixmap t = this.skin.get("button0", Pixmap.class);
+		
+		Pixmap p = new Pixmap((int)this.getWidth(), (int)this.getHeight(), Pixmap.Format.RGB888);
+		
+		for (int x = 0; x < this.getWidth(); x += t.getWidth()) {
+			for (int y = 0; y < this.getHeight(); y += t.getHeight()) {
+				p.drawPixmap(t, x, y);
+			}
+		}
+		
+		Texture tt = new Texture(p);
+		this.backgroundImage = new Image(tt);
+		this.addActor(this.backgroundImage);
 	}
 
 	private void addDrawable(int id, Color c) {
@@ -50,6 +66,8 @@ public class GameLevel extends GameLevelBase {
 		p.setColor(new Color(0f, 0f, 0f, 1.0f));
 		p.drawLine(0,  0, LD48.TILE_SIZE,  0);
 		p.drawLine(0, 0, 0, LD48.TILE_SIZE);
+		
+		this.skin.add("button" + id, p);
 
 		Texture t = new Texture(p);		
 		this.skin.add("button" + id, t);
@@ -76,7 +94,7 @@ public class GameLevel extends GameLevelBase {
 			this.clickSound.stop();
 		}
 	}
-	
+
 	protected Vector2 getRandomVector() {
 		int x = this.random.nextInt((int)Math.floor(this.getWidth() / tileSize));
 		int y = this.random.nextInt((int)Math.floor(this.getHeight() / tileSize));
@@ -104,11 +122,11 @@ public class GameLevel extends GameLevelBase {
 		this.bestKnown = numRandoms;
 		
 		this.buttons.clear();
-		for (int x = 0; x < this.getWidth(); x += tileSize) {
+		for (int x = 0; x < Gdx.graphics.getWidth(); x += tileSize) {
 			Array<TileActor> tmpArray = new Array<TileActor>();
 			this.buttons.add(tmpArray);
 			
-			for (int y = 0; y < this.getHeight(); y += tileSize) {
+			for (int y = 0; y < Gdx.graphics.getHeight(); y += tileSize) {
 				TileActor button = new TileActor(this.skin, ld48, x / this.tileSize,  y / this.tileSize, 6, this);
 				button.setSize(tileSize, tileSize);
 				button.setColor(new Color(1, 1, 1, 1));

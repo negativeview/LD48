@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
 public class TileActor extends Actor {
 	public LD48 ld48;
@@ -27,6 +26,8 @@ public class TileActor extends Actor {
 	}
 	
 	public void draw(SpriteBatch batch, float alpha) {
+		if (this.count == 0)
+			return;
 		batch.draw(this.drawable, this.x * LD48.TILE_SIZE, this.y * LD48.TILE_SIZE);
 	}
 	
