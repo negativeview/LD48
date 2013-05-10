@@ -5,6 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.utils.Array;
+import com.gracefulcode.LD48.GraphicsConfiguration;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 
@@ -46,7 +47,7 @@ public class StarModeTutorial extends Tutorial {
 	protected void doRandoms(int numRandoms) {
 		this.resetData = new Array<Vector2>();
 
-		int offset = (int) Math.ceil(240 / LD48.TILE_SIZE);
+		int offset = (int) Math.ceil(240 / GraphicsConfiguration.tileSize);
 
 		Vector2 tmp;
 		switch (this.mode) {

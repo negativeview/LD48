@@ -41,4 +41,7 @@ public class GameLevelBase extends Stage {
 	public boolean isDone() {
 		return false;
 	}
+
+	public void resize(int width, int height) {
+	}
 }

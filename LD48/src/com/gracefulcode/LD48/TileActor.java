@@ -28,7 +28,7 @@ public class TileActor extends Actor {
 	public void draw(SpriteBatch batch, float alpha) {
 		if (this.count == 0)
 			return;
-		batch.draw(this.drawable, LD48.fixX(this.x * LD48.TILE_SIZE), LD48.fixY(this.y * LD48.TILE_SIZE));
+		batch.draw(this.drawable, LD48.fixX(this.x * GraphicsConfiguration.tileSize), LD48.fixY(this.y * GraphicsConfiguration.tileSize));
 	}
 	
 	public void changeCount(int by) {

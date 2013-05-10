@@ -59,13 +59,13 @@ public class GameLevel extends GameLevelBase {
 	}
 
 	private void addDrawable(int id, Color c) {
-		Pixmap p = new Pixmap(LD48.TILE_SIZE, LD48.TILE_SIZE, Pixmap.Format.RGB888);
+		Pixmap p = new Pixmap(GraphicsConfiguration.tileSize, GraphicsConfiguration.tileSize, Pixmap.Format.RGB888);
 		p.setColor(c);
 		p.fill();
 
 		p.setColor(new Color(0f, 0f, 0f, 1.0f));
-		p.drawLine(0,  0, LD48.TILE_SIZE,  0);
-		p.drawLine(0, 0, 0, LD48.TILE_SIZE);
+		p.drawLine(0,  0, GraphicsConfiguration.tileSize,  0);
+		p.drawLine(0, 0, 0, GraphicsConfiguration.tileSize);
 		
 		this.skin.add("button" + id, p);
 

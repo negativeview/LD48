@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.WidgetGroup;
 import com.gracefulcode.LD48.ColorScheme;
 import com.gracefulcode.LD48.GameLevelBase;
+import com.gracefulcode.LD48.GraphicsConfiguration;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.views.MainMenuContainer;
 
@@ -24,6 +25,7 @@ public class MainScreen extends GameLevelBase {
 	private Image backgroundBackground;
 	private ColorScheme colorScheme;
 	private WidgetGroup tileHolder;
+	private MainMenuContainer mmc;
 	
 	public MainScreen(Skin skin, LD48 ld48) {
 		super(skin, ld48);
@@ -31,30 +33,40 @@ public class MainScreen extends GameLevelBase {
 		
 		this.skin = skin;
 		
-		Pixmap p = new Pixmap((int)this.getWidth(), (int)this.getHeight(), Pixmap.Format.RGB888);
+		this.tileHolder = new WidgetGroup();
+		this.addActor(this.tileHolder);
+		this.tileHolder.setSize(GraphicsConfiguration.effectiveWidth, GraphicsConfiguration.effectiveHeight);
+	}
+	
+	@Override
+	public void resize(int width, int height) {
+		if (this.backgroundBackground != null) {
+			this.backgroundBackground.remove();
+		}
+		Pixmap p = new Pixmap(GraphicsConfiguration.effectiveWidth, GraphicsConfiguration.effectiveHeight, Pixmap.Format.RGB888);
 		p.setColor(new Color(1, 1, 1, 1));
 		p.fill();
 		
 		p.setColor(new Color(0.0f, 0.0f, 0.0f, 1));
 		
-		for (int i = 0; i < this.getHeight(); i += LD48.TILE_SIZE) {
-			p.drawLine(0,  i, (int)this.getWidth(), i);			
+		for (int i = 0; i < GraphicsConfiguration.effectiveHeight; i += GraphicsConfiguration.tileSize) {
+			p.drawLine(0,  i, GraphicsConfiguration.effectiveWidth, i);			
 		}
-		for (int i = 0; i < this.getWidth(); i += LD48.TILE_SIZE) {
-			p.drawLine(i, 0, i, (int)this.getHeight());
+		for (int i = 0; i < GraphicsConfiguration.effectiveWidth; i += GraphicsConfiguration.tileSize) {
+			p.drawLine(i, 0, i, GraphicsConfiguration.effectiveHeight);
 		}
 		
 		Texture tex = new Texture(p);
 		this.backgroundBackground = new Image(tex);
-
 		this.addActor(this.backgroundBackground);
-		this.tileHolder = new WidgetGroup();
-		this.addActor(this.tileHolder);
-		this.tileHolder.setSize(this.getWidth(), this.getHeight());
+		this.backgroundBackground.toBack();
 		
-		MainMenuContainer mmc = new MainMenuContainer(this.skin, this.ld48);
-		mmc.setPosition((this.getWidth() / 2) - (MainMenuContainer.MENU_WIDTH / 2), 0);
-		this.addActor(mmc);
+		if (this.mmc != null)
+			this.mmc.remove();
+
+		this.mmc = new MainMenuContainer(this.skin, this.ld48);
+		this.addActor(this.mmc);
+		this.mmc.setPosition((GraphicsConfiguration.effectiveWidth / 2) - (MainMenuContainer.MENU_WIDTH / 2), 0);	
 	}
 	
 	@Override
@@ -71,11 +83,11 @@ public class MainScreen extends GameLevelBase {
 		Random rand = new Random();
 		for (int i = 0; i < this.colorScheme.getNumColors(); i++) {
 			for (int m = 0; m < 10; m++) {
-				Pixmap p = new Pixmap(LD48.TILE_SIZE - 1, LD48.TILE_SIZE - 1, Pixmap.Format.RGB888);
+				Pixmap p = new Pixmap(GraphicsConfiguration.tileSize - 1, GraphicsConfiguration.tileSize - 1, Pixmap.Format.RGB888);
 				
 				Color c = this.colorScheme.getColor(i);
-				int x = rand.nextInt(1280 / LD48.TILE_SIZE);
-				int y = rand.nextInt(720 / LD48.TILE_SIZE);
+				int x = rand.nextInt(GraphicsConfiguration.effectiveWidth / GraphicsConfiguration.tileSize);
+				int y = rand.nextInt(GraphicsConfiguration.effectiveHeight / GraphicsConfiguration.tileSize);
 				
 				p.setColor(c);
 				p.fill();
@@ -85,8 +97,8 @@ public class MainScreen extends GameLevelBase {
 				im.setZIndex(10);
 				
 				im.setPosition(
-					LD48.fixX((x * LD48.TILE_SIZE) + 1),
-					LD48.fixY(y * LD48.TILE_SIZE)
+					LD48.fixX((x * GraphicsConfiguration.tileSize) + 1),
+					LD48.fixY(y * GraphicsConfiguration.tileSize)
 				);
 				im.setColor(0, 0, 0, 0);
 				this.tileHolder.addActor(im);
