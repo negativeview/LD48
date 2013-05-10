@@ -86,8 +86,8 @@ public class MainScreen extends GameLevelBase {
 				Pixmap p = new Pixmap(GraphicsConfiguration.tileSize - 1, GraphicsConfiguration.tileSize - 1, Pixmap.Format.RGB888);
 				
 				Color c = this.colorScheme.getColor(i);
-				int x = rand.nextInt(GraphicsConfiguration.effectiveWidth / GraphicsConfiguration.tileSize);
-				int y = rand.nextInt(GraphicsConfiguration.effectiveHeight / GraphicsConfiguration.tileSize);
+				int x = rand.nextInt((GraphicsConfiguration.effectiveWidth / GraphicsConfiguration.tileSize) + 1);
+				int y = rand.nextInt((GraphicsConfiguration.effectiveHeight / GraphicsConfiguration.tileSize) + 1);
 				
 				p.setColor(c);
 				p.fill();
