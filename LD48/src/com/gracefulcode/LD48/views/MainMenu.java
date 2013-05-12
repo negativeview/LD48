@@ -67,5 +67,13 @@ public class MainMenu extends LD48View {
 			this.exitButton.setSize(MainMenuContainer.MENU_WIDTH, GraphicsConfiguration.tileSize);
 		}
 		this.addActor(this.exitButton);
+
+		cl = new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				Gdx.app.exit();
+			}
+		};
+		this.exitButton.addListener(cl);
 	}
 }
