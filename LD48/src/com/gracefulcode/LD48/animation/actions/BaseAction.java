@@ -4,16 +4,22 @@ import com.badlogic.gdx.scenes.scene2d.actions.MoveByAction;
 import com.badlogic.gdx.scenes.scene2d.actions.ParallelAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SizeByAction;
+import com.gracefulcode.LD48.GameLevel;
 
 public class BaseAction extends SequenceAction {
 	protected int pulseSize;
 	protected float pulseDuration;
 	protected int difference;
+	protected GameLevel level;
 	
-	public BaseAction(int pulseSize, float pulseDuration, int difference) {
+	public BaseAction(int pulseSize, float pulseDuration, int difference, GameLevel level) {
 		this.pulseSize = pulseSize;
 		this.pulseDuration = pulseDuration;
 		this.difference = difference;
+		this.level = level;
+		
+		if (level.isPaused())
+			this.pulseDuration = 0.0f;
 		
 		MoveByAction mba = new MoveByAction();
 		mba.setAmount(pulseSize * -0.5f, pulseSize * -0.5f);
@@ -42,10 +48,5 @@ public class BaseAction extends SequenceAction {
 		pa.addAction(sba);
 		
 		this.addAction(pa);
-	}
-
-	@Override
-	public boolean act(float delta) {
-		return super.act(delta);
 	}
 }

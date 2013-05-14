@@ -132,7 +132,7 @@ public class GameLevel extends GameLevelBase {
 	}
 	
 	protected void doPulse(Vector2 tmp) {
-		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, true);
+		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, true, this);
 	}
 	
 	protected void doRandoms(int numRandoms) {
@@ -184,7 +184,7 @@ public class GameLevel extends GameLevelBase {
 		
 		y = (int)(this.getHeight() - y);
 		TileActor a = this.getTile((int)Math.floor(x / this.tileSize), (int)Math.floor(y / this.tileSize));
-		this.getPaintbrush().pulse(a, 0, amount, false);
+		this.getPaintbrush().pulse(a, 0, amount, false, this);
 		this.numClicks++;
 		return true;
 	}
@@ -221,7 +221,7 @@ public class GameLevel extends GameLevelBase {
 		while (it.hasNext()) {
 			Vector2 tmp = it.next();
 			TileActor button = this.getTile((int)tmp.x, (int)tmp.y);
-			this.paintbrush.pulse(button,  0,  1,  true);
+			this.paintbrush.pulse(button,  0,  1,  true, this);
 		}
 	}
 
@@ -255,5 +255,9 @@ public class GameLevel extends GameLevelBase {
 
 	public float getTime() {
 		return this.elapsedTime;
+	}
+
+	public boolean isPaused() {
+		return this.paused;
 	}
 }

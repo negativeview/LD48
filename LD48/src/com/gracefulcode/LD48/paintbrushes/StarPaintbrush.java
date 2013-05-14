@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.gracefulcode.LD48.GameLevel;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
 import com.gracefulcode.LD48.animation.actions.StarCenterAction;
@@ -39,7 +40,7 @@ public class StarPaintbrush extends Paintbrush {
 	}
 
 	@Override
-	public void pulse(TileActor actor, final int direction, final int value, boolean instant) {
+	public void pulse(TileActor actor, final int direction, final int value, boolean instant, GameLevel level) {
 		actor.changeCount(value);
 		
 		if (!instant) {
@@ -50,32 +51,32 @@ public class StarPaintbrush extends Paintbrush {
 				actor.level.setSound(1);
 			}
 			
-			Action sa = new StarCenterAction((int)(actor.getWidth() / 2), 0.02f, value);			
+			Action sa = new StarCenterAction((int)(actor.getWidth() / 2), 0.02f, value, level);
 			actor.addAction(sa);
 		} else {
 			if (direction == 0 || direction == 1)
-				if (actor.level.getTile(actor.x - 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y), 1, value, true);
+				if (actor.level.getTile(actor.x - 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y), 1, value, true, level);
 			
 			if (direction == 0 || direction == 2)
-				if (actor.level.getTile(actor.x + 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y), 2, value, true);
+				if (actor.level.getTile(actor.x + 1, actor.y) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y), 2, value, true, level);
 			
 			if (direction == 0 || direction == 3)
-				if (actor.level.getTile(actor.x, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y - 1), 3, value, true);
+				if (actor.level.getTile(actor.x, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y - 1), 3, value, true, level);
 			
 			if (direction == 0 || direction == 4)
-				if (actor.level.getTile(actor.x, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y + 1), 4, value, true);
+				if (actor.level.getTile(actor.x, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x, actor.y + 1), 4, value, true, level);
 
 			if (direction == 0 || direction == 5) {
-				if (actor.level.getTile(actor.x + 1, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y + 1), 5, value, true);
+				if (actor.level.getTile(actor.x + 1, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y + 1), 5, value, true, level);
 			}
 			if (direction == 0 || direction == 6) {
-				if (actor.level.getTile(actor.x + 1, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y - 1), 6, value, true);
+				if (actor.level.getTile(actor.x + 1, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x + 1, actor.y - 1), 6, value, true, level);
 			}
 			if (direction == 0 || direction == 7) {
-				if (actor.level.getTile(actor.x - 1, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y + 1), 7, value, true);
+				if (actor.level.getTile(actor.x - 1, actor.y + 1) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y + 1), 7, value, true, level);
 			}
 			if (direction == 0 || direction == 8) {
-				if (actor.level.getTile(actor.x - 1, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y - 1), 8, value, true);
+				if (actor.level.getTile(actor.x - 1, actor.y - 1) != null) this.pulse(actor.level.getTile(actor.x - 1, actor.y - 1), 8, value, true, level);
 			}
 		}
 	}

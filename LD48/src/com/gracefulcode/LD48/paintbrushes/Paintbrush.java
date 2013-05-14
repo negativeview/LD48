@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.SequenceAction;
 import com.badlogic.gdx.scenes.scene2d.actions.SizeByAction;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.gracefulcode.LD48.GameLevel;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
 import com.gracefulcode.LD48.difficulty.Difficulty;
@@ -20,7 +21,7 @@ abstract public class Paintbrush {
 		this.ld48 = ld48;
 	}
 
-	public abstract void pulse(final TileActor actor, final int direction, final int value, final boolean instant);
+	public abstract void pulse(final TileActor actor, final int direction, final int value, final boolean instant, GameLevel level);
 
 	public Image getImage() {
 		return null;

@@ -36,6 +36,6 @@ public class Tutorial extends GameLevel {
 
 	@Override
 	protected void doPulse(Vector2 tmp) {
-		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, false);
+		this.paintbrush.pulse(this.getTile((int)tmp.x, (int)tmp.y), 0, 1, false, this);
 	}
 }

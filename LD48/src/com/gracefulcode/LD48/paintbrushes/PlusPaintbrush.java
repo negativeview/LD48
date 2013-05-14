@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.gracefulcode.LD48.GameLevel;
 import com.gracefulcode.LD48.LD48;
 import com.gracefulcode.LD48.TileActor;
 import com.gracefulcode.LD48.animation.actions.PlusCenterAction;
@@ -39,7 +40,7 @@ public class PlusPaintbrush extends Paintbrush {
 	}
 
 	@Override
-	public void pulse(TileActor actor, final int direction, final int value, boolean instant) {
+	public void pulse(TileActor actor, final int direction, final int value, boolean instant, GameLevel level) {
 		actor.changeCount(value);
 		
 		if (!instant) {
@@ -50,31 +51,31 @@ public class PlusPaintbrush extends Paintbrush {
 				actor.level.setSound(1);
 			}
 
-			Action sa = new PlusCenterAction((int)(actor.getWidth() / 2), 0.02f, value);			
+			Action sa = new PlusCenterAction((int)(actor.getWidth() / 2), 0.02f, value, level);			
 			actor.addAction(sa);
 		} else {
 			if (direction == 0 || direction == 1) {
 				if (actor.level.getTile(actor.x - 1, actor.y) != null) {
 					TileActor tmp = actor.level.getTile(actor.x - 1, actor.y);
-					this.pulse(tmp, 1, value, true);
+					this.pulse(tmp, 1, value, true, level);
 				}
 			}
 			
 			if (direction == 0 || direction == 2) {
 				if (actor.level.getTile(actor.x + 1, actor.y) != null) {
-					this.pulse(actor.level.getTile(actor.x + 1, actor.y), 2, value, true);
+					this.pulse(actor.level.getTile(actor.x + 1, actor.y), 2, value, true, level);
 				}
 			}
 			
 			if (direction == 0 || direction == 3) {
 				if (actor.level.getTile(actor.x, actor.y - 1) != null) {
-					this.pulse(actor.level.getTile(actor.x, actor.y - 1), 3, value, true);
+					this.pulse(actor.level.getTile(actor.x, actor.y - 1), 3, value, true, level);
 				}
 			}
 			
 			if (direction == 0 || direction == 4) {
 				if (actor.level.getTile(actor.x, actor.y + 1) != null) {
-					this.pulse(actor.level.getTile(actor.x, actor.y + 1), 4, value, true);
+					this.pulse(actor.level.getTile(actor.x, actor.y + 1), 4, value, true, level);
 				}
 			}
 		}

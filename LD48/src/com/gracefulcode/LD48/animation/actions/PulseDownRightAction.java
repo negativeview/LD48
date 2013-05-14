@@ -1,11 +1,12 @@
 package com.gracefulcode.LD48.animation.actions;
 
+import com.gracefulcode.LD48.GameLevel;
 import com.gracefulcode.LD48.TileActor;
 
 public class PulseDownRightAction extends BaseAction {
 
-	public PulseDownRightAction(int pulseSize, float pulseDuration, int difference) {
-		super(pulseSize, pulseDuration, difference);
+	public PulseDownRightAction(int pulseSize, float pulseDuration, int difference, GameLevel level) {
+		super(pulseSize, pulseDuration, difference, level);
 	}
 
 	@Override
