@@ -11,7 +11,6 @@ public class GameLevelBase extends Stage {
 	public int numSounds = 0;
 	public int numClicks = 0;
 	public float volume = 0.1f;
-	public float time = 0.0f;
 	
 	public GameLevelBase(Skin skin, LD48 ld48) {
 		this.skin = skin;

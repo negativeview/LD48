@@ -23,7 +23,7 @@ public class Reporter implements HttpResponseListener {
 			json += ",\"paintbrush\": \"" + level.getPaintbrush().name + "\"";
 			json += ",\"bestKnown\": \"" + level.bestKnown + "\"";
 			json += ",\"numClicks\": \"" + level.numClicks + "\"";
-			json += ",\"time\": \"" + level.time + "\"";
+			json += ",\"time\": \"" + level.getTime() + "\"";
 		}
 		
 		if (extraInfo != null) {

@@ -3,6 +3,7 @@ package com.gracefulcode.LD48.screens;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -67,6 +68,27 @@ public class MainScreen extends GameLevelBase {
 		this.mmc = new MainMenuContainer(this.skin, this.ld48);
 		this.addActor(this.mmc);
 		this.mmc.setPosition((GraphicsConfiguration.effectiveWidth / 2) - (MainMenuContainer.MENU_WIDTH / 2), 0);	
+	}
+	
+	@Override
+	public boolean keyDown(int keycode) {
+		if (keycode == Keys.BACK) {
+			if (this.mmc.viewCount() > 1) {
+				this.mmc.popView();
+			} else {
+				Gdx.app.exit();
+			}
+		} else if (keycode == Keys.MENU) {
+			if (this.mmc.viewCount() == 1) {
+				Gdx.app.exit();
+			} else {
+				while (this.mmc.viewCount() > 1) {
+					this.mmc.popView();
+				}
+			}
+		}
+		
+		return false;
 	}
 	
 	@Override

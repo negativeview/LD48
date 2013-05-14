@@ -65,6 +65,8 @@ public class LD48 implements ApplicationListener {
 
 		this.stage.setCamera(camera);
 		Gdx.input.setInputProcessor(this.stage);
+		Gdx.input.setCatchBackKey(true);
+		Gdx.input.setCatchMenuKey(true);
 	}
 	
 	public void gotoGame(GameLevelBase gl) {

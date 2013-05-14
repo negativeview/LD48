@@ -66,6 +66,10 @@ public class MainMenuContainer extends LD48View {
 		}
 	}
 	
+	public int viewCount() {
+		return this.viewStack.size;
+	}
+	
 	public void popView() {
 		LD48View v = this.viewStack.pop();
 

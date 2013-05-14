@@ -45,7 +45,7 @@ public class RecapScreen extends GameLevelBase {
 		this.label.setPosition(30, 260);
 		this.addActor(this.label);
 		
-		this.label = new Label("Time: " + (int)level.time + ((int)level.time == 1 ? " second" : " seconds"), this.skin);
+		this.label = new Label("Time: " + (int)level.getTime() + ((int)level.getTime() == 1 ? " second" : " seconds"), this.skin);
 		this.label.setPosition(30, 220);
 		this.addActor(this.label);
 		

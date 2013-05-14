@@ -22,13 +22,14 @@ public class GameLevel extends GameLevelBase {
 	protected Random random;
 	protected Array<Array<TileActor>> buttons;
 	protected Array<Vector2> resetData;
-	protected long startTime = 0;
 	protected Sound clickSound;
 	protected int tileSize;
 	protected Image backgroundImage;
+	protected float elapsedTime;
 
 	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48);
+		this.elapsedTime = 0;
 		this.random = new Random();
 		this.clickSound = Gdx.audio.newSound(Gdx.files.internal("data/Blip_Select.wav"));
 		this.levelNum = levelNum;
@@ -56,6 +57,12 @@ public class GameLevel extends GameLevelBase {
 		Texture tt = new Texture(p);
 		this.backgroundImage = new Image(tt);
 		this.addActor(this.backgroundImage);
+	}
+	
+	@Override
+	public void act(float delta) {
+		this.elapsedTime += delta;
+		super.act(delta);
 	}
 
 	private void addDrawable(int id, Color c) {
@@ -148,18 +155,11 @@ public class GameLevel extends GameLevelBase {
 			amount = -1;
 		}
 		
-		if (this.startTime == 0)
-			this.startTiming();
-		
 		y = (int)(this.getHeight() - y);
 		TileActor a = this.getTile((int)Math.floor(x / this.tileSize), (int)Math.floor(y / this.tileSize));
 		this.getPaintbrush().pulse(a, 0, amount, false);
 		this.numClicks++;
 		return true;
-	}
-	
-	public void startTiming() {
-		this.startTime = System.currentTimeMillis();
 	}
 	
 	public TileActor getTile(int x, int y) {
@@ -211,7 +211,6 @@ public class GameLevel extends GameLevelBase {
 		}
 		this.clickSound.stop();
 		
-		this.time = (System.currentTimeMillis() - this.startTime) / 1000;
 		return true;
 	}
 
@@ -225,5 +224,9 @@ public class GameLevel extends GameLevelBase {
 	
 	public Paintbrush getPaintbrush() {
 		return this.paintbrush;
+	}
+
+	public float getTime() {
+		return this.elapsedTime;
 	}
 }
