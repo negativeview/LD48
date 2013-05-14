@@ -69,10 +69,15 @@ public class LD48 implements ApplicationListener {
 		Gdx.input.setCatchMenuKey(true);
 	}
 	
+	public void goBackToMenu() {
+		this.gotoGame(new MainScreen(this.skin, this));
+	}
+	
 	public void gotoGame(GameLevelBase gl) {
 		this.stage = gl;
 		gl.initialize();
 		stage.setCamera(camera);
+		this.stage.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		Gdx.input.setInputProcessor(stage);		
 	}
 	

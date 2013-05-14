@@ -72,7 +72,7 @@ public class GameLevel extends GameLevelBase {
 				this.pauseView.remove();
 			} else {
 				this.paused = true;
-				this.pauseView = new PauseView(this.skin);
+				this.pauseView = new PauseView(this.skin, this.ld48);
 				this.addActor(pauseView);
 				pauseView.setSize(this.getWidth(), this.getHeight());
 			}
@@ -172,6 +172,11 @@ public class GameLevel extends GameLevelBase {
 
 	@Override
 	public boolean touchDown(int x, int y, int pointer, int button) {
+		// Allow pause menu to work.
+		if (this.paused) {
+			return super.touchDown(x,  y,  pointer,  button);
+		}
+		
 		int amount = 1;
 		if (button == 0) {
 			amount = -1;
