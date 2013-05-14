@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -14,6 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.gracefulcode.LD48.difficulty.Difficulty;
 import com.gracefulcode.LD48.paintbrushes.Paintbrush;
+import com.gracefulcode.LD48.views.LD48View;
+import com.gracefulcode.LD48.views.PauseView;
 
 public class GameLevel extends GameLevelBase {
 	protected int levelNum;
@@ -26,6 +29,8 @@ public class GameLevel extends GameLevelBase {
 	protected int tileSize;
 	protected Image backgroundImage;
 	protected float elapsedTime;
+	protected boolean paused = false;
+	private PauseView pauseView;
 
 	public GameLevel(int levelNum, Skin skin, LD48 ld48, Difficulty difficulty, Paintbrush paintbrush) {
 		super(skin, ld48);
@@ -60,8 +65,25 @@ public class GameLevel extends GameLevelBase {
 	}
 	
 	@Override
+	public boolean keyDown(int keycode) {
+		if (keycode == Keys.MENU || keycode == Keys.ESCAPE) {
+			if (this.paused) {
+				this.paused = false;
+				this.pauseView.remove();
+			} else {
+				this.paused = true;
+				this.pauseView = new PauseView(this.skin);
+				this.addActor(pauseView);
+				pauseView.setSize(this.getWidth(), this.getHeight());
+			}
+		}
+		return true;
+	}
+
+	@Override
 	public void act(float delta) {
-		this.elapsedTime += delta;
+		if (!this.paused)
+			this.elapsedTime += delta;
 		super.act(delta);
 	}
 
